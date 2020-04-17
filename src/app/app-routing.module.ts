@@ -5,7 +5,7 @@ import { ErrorComponent } from './pages/error/error.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, pathMatch: 'full'},
   { path: '**', component: ErrorComponent }
 ];
 

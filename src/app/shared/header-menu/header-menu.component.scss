@@ -7,7 +7,22 @@
 }
 
 #menu-mobile {
+
     @media screen and (min-width: 600px) {
         display: none !important;
     }
+}
+
+.mat-menu-panel {
+    background-color: transparent;
+    border: 1px solid #FFA31A12;
+
+    .mat-menu-item {
+        color: #9a9a9a;
+    }
+}
+
+.highlight {
+    color: #FFA31A !important;
+    font-weight: 600;
 }
