@@ -22,15 +22,38 @@ $yellow: #FFA31A;
             }
         }
     }
+}
 
-    .main-text {
-        font-size: 44px;
-        font-weight: 300;
-        line-height: 44px;
+.main-text {
+
+    font-size: 28px;
+    
+    @media screen and (min-width: 768px) {
+        font-size: 32px;
     }
 
-    .paragraph {
-        font-size: 16px;
-        line-height: 22px;
+    @media screen and (min-width: 992px) {
+        font-size: 44px;        
     }
+
+    font-weight: 300;
+    line-height: 44px;
+}
+
+.line {
+    width: 10%;
+    border-top: 2px solid #C2E3D4;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.paragraph {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.bg-highlight {
+    background-color: $yellow;
+    font-size: 18px;
+    padding: 0 40px;
 }
