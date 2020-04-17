@@ -14,6 +14,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderMenuComponent } from './shared/header-menu/header-menu.component';
+import { NgbCarouselModule } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HeaderMenuComponent } from './shared/header-menu/header-menu.component'
     MatToolbarModule,
     MatMenuModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

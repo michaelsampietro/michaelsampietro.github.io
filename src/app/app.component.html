@@ -1,21 +1,75 @@
-<div id="main">
-    <div id="content" fxFlex="column">
+<div id="content">
 
-        <div id="header" class="container" fxLayout="column">
-            <div fxLayoutAlign="space-between center" fxLayout="row">
-                <div id="logo">
-                    <img width="70" src="../assets/images/branding/logo-principal.svg" alt="ZEN SLEEP">
-                </div>
+    <div id="header" fxLayout="column" class="py-5" fxLayoutGap="5%">
 
-                <app-header-menu></app-header-menu>
+        <div class="container" fxLayoutAlign="space-between center" fxLayout="row">
+            <div id="logo">
+                <img width="70" src="../assets/images/branding/logo-principal.svg" alt="ZEN SLEEP">
             </div>
 
-            <div id="carrousel-wrapper">
-                carrousel aqui
+            <app-header-menu></app-header-menu>
+        </div>
+
+        <div class="container" id="carousel-wrapper">
+            <ngb-carousel *ngIf="images" [showNavigationIndicators]="false" [interval]="0">
+                <ng-template ngbSlide *ngFor="let image of images">
+                    <div fxLayoutAlign="center center" class=" text-center m-auto">
+                        <img [src]="image" alt="Random first slide">
+                    </div>
+                </ng-template>
+
+                <div class="caption">
+                    <p>Travesseiro Zen Sleep</p>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </ngb-carousel>
+        </div>
+
+        <p class="text-uppercase" fxLayoutAlign="center center" style="font-weight: 200;">
+            <mat-icon>expand_more</mat-icon> conheça os benefícios
+        </p>
+
+        <div class="container" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="2%">
+
+            <div fxFlex="80" fxFlex.gt-xs="40">
+                <img class="w-100" src="../assets/images/home/sono-ruim-rounded6@2x.png" alt="Noite de sono ruim">
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-xs="58" fxLayout="column" fxLayoutAlign="start start">
+                <p class="main-text">Você já acordou com dores no corpo, se sentindo cansado ou sem energia?</p>
+                <p class="paragraph">Ou tem dificuldades para dormir a noite? <br>Saiba que você não está sozinho. De
+                    acordo com uma pesquisa recente* cerca de 72% da população brasileira diz ter algum tipo de
+                    dificuldade ou distúrbio que lhes impedem de ter um boa noite de sono, impactando diretamente no
+                    bem-estar e na qualidade de vida.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container text-center" fxLayout="column" fxLayoutGap="5%">
+
+        <img class="w-100" src="../assets/images/home/lavanda@2x.png" alt="Lavanda">
+
+        <span class="main-text">E se você pudesse dormir todas as noites experimentando a sensação única de relaxamento
+            e bem-estar do óleo essencial de Lavanda</span>
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="text-center">
+            <div fxFlex="100" fxFlex.gt-sm="50">
+                <img src="../assets/images/home/ice@2x.png" alt="Carvão Ativado" class="w-100">
+            </div>
+            <span fxFlex="100" fxFlex.gt-sm="48" class="main-text">ou se beneficiando das propriedades terapêuticas da Aloe Vera</span>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutAlign="center center" class="text-center">
+
+            <span fxFlex="100" fxFlex.gt-sm="48" class="main-text">ou ainda, das funcionalidades do Carvão Ativado?</span>
+            <div fxFlex="100" fxFlex.gt-sm="50">
+                <img src="../assets/images/home/carvao@2x.png" alt="Carvão Ativado" class="w-100">
             </div>
         </div>
 
-        <app-footer></app-footer>
-
     </div>
+
+    <app-footer></app-footer>
+
 </div>
