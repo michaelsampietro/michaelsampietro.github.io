@@ -1,0 +1,13 @@
+#menu {
+    display: none !important;
+
+    @media screen and (min-width: 600px) {
+        display: flex !important;
+    }
+}
+
+#menu-mobile {
+    @media screen and (min-width: 600px) {
+        display: none !important;
+    }
+}

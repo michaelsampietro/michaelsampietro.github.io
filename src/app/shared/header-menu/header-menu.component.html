@@ -1,0 +1,16 @@
+<div id="menu" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5%">
+    <a [routerLink]="['/']" routerLinkActive="highlight">Home</a>
+    <a [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
+    <a [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
+    <a [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
+</div>
+
+<div id="menu-mobile">
+    <button mat-button [mat-menu-trigger-for]="menu"><mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <a mat-menu-item [routerLink]="['/']" routerLinkActive="highlight">Home</a>
+        <a mat-menu-item [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
+        <a mat-menu-item [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
+        <a mat-menu-item [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
+    </mat-menu>
+</div>

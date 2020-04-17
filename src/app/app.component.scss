@@ -1,0 +1,28 @@
+$dark: #1B1B1B;
+$font-color: #9A9A9A;
+$yellow: #FFA31A;
+
+#main {
+    #content {
+        color: $font-color;
+    
+        #header {
+            background-color: $dark;
+            min-height: 100vh;
+
+            #links a:hover {
+                color: $yellow;
+                transform: scale(1.05);
+                transition: all .35s;
+            }
+        }
+    }    
+}
+
+.container {
+    padding: 5%;
+}
+
+.highlight {
+    color: $yellow;
+}
