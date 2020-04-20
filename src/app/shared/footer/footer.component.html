@@ -8,14 +8,14 @@
                 <a class="footer-item" href="">FAQ</a>
                 <a class="footer-item" href="">Contato</a>
             </div>
-            <div class="py-4" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
-                <div id="payment-methods" fxLayoutAlign="start center">
+            <div class="pb-3 pt-2" fxFlexFill fxLayout="row wrap" fxLayoutAlign="space-between center">
+                <div id="payment-methods" fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start center">
                     Formas de pagamento:
                     <img src="../../../assets/images/vendor/mastercard.png" alt="mastercard">
                     <img src="../../../assets/images/vendor/visa.png" alt="visa">
                     <img src="../../../assets/images/vendor/pagseguro.png" alt="pagseguro">
                 </div>
-                <div id="social-media" fxLayoutAlign="end center">
+                <div class="mt-xs-3" id="social-media" fxFlex="100" fxFlex.gt-sm="30" fxLayoutAlign="start center" >
                     Zen Sleep nas redes sociais: 
                     <a href="https://www.instagram.com/" target="_blank">
                         <fa-icon [icon]="instagramIcon"></fa-icon>
@@ -29,14 +29,14 @@
     </div>
     
     <div class="bg-dark py-3">
-        <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
-            <div id="about-wrapper" fxLayout="row" fxFlex.gt-sm="60" fxLayoutAlign="start center" fxLayoutGap="2%">
+        <div class="container" fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <div id="about-wrapper" fxLayout="row" fxFlex="100" fxFlex.gt-sm="60" fxLayoutAlign="start center" fxLayoutGap="2%">
                 <img src="../../../assets/images/branding/logo-escura.svg" alt="Zen Sleep">
                 <p class="pt-2">Copyright&copy; Zen Sleep Todos os direitos reservados. CNPJ 35.558.713/0001-50 <br>
                    Calçada Vitória Régia, 40 Alphaville Barueri/SP CEP 06453-057.</p>
             </div>
     
-            <div id="contact-wrapper" fxLayout="column">
+            <div id="contact-wrapper" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
                 <div class="d-inline-flex">
                     <fa-icon class="pr-2" [icon]="whatsAppIcon"></fa-icon>
                     <span>(11) 4622-2875</span>
