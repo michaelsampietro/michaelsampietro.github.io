@@ -63,12 +63,15 @@
 
     <div fxLayout="row wrap" fxLayoutAlign="center center" class="text-center">
 
+        <div class="d-flex d-lg-none" fxFlex="100" fxFlex.gt-sm="50">
+            <img src="../assets/images/home/carvao@2x.png" alt="Carvão Ativado" class="w-100">
+        </div>
         <span fxFlex="100" fxFlex.gt-sm="48" class="main-text lines">
             <hr class="line">
             ou ainda, das funcionalidades do Carvão Ativado?
             <hr class="line">
         </span>
-        <div fxFlex="100" fxFlex.gt-sm="50">
+        <div class="d-none d-lg-flex" fxFlex="100" fxFlex.gt-sm="50">
             <img src="../assets/images/home/carvao@2x.png" alt="Carvão Ativado" class="w-100">
         </div>
     </div>
@@ -83,7 +86,7 @@
             <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card mt-5 py-4 text-center" fxLayout="column"
                 fxLayoutAlign="center center">
                 <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
-                <p class="px-3">Travesseiro Zen Sleep Dynamic Cell&trade; {{pillow.name}}</p>
+                <p class="px-3">Travesseiro Zen Sleep <br> Dynamic Cell&trade; {{pillow.name}}</p>
                 <a class="btn bg-highlight">Comprar</a>
                 <a class="text-underline mt-3">Saiba mais</a>
             </div>
