@@ -31,7 +31,8 @@
 
             <div fxFlex="100" fxFlex.gt-xs="58" fxLayout="column" fxLayoutAlign="start start">
                 <p class="main-text">Você já acordou com dores no corpo, se sentindo cansado ou sem energia?</p>
-                <p class="paragraph" style="font-weight: 300;">Ou tem dificuldades para dormir a noite? <br>Saiba que você não está sozinho.
+                <p class="paragraph" style="font-weight: 300;">Ou tem dificuldades para dormir a noite? <br>Saiba que
+                    você não está sozinho.
                     De acordo com uma pesquisa recente* cerca de 72% da população brasileira diz ter algum tipo de
                     dificuldade ou distúrbio que lhes impedem de ter um boa noite de sono, impactando diretamente no
                     bem-estar e na qualidade de vida.</p>
@@ -75,15 +76,36 @@
 
 <div class="bg-dark py-5">
     <div class="container" fxLayout="column" fxLayoutGap="2%">
-        <p class="main-text text-center">Conheça nossa linha completa de travesseiros e seus benefícios para uma perfeita noite de sono.</p>
+        <p class="main-text text-center">Conheça nossa linha completa de travesseiros e seus benefícios para uma
+            perfeita noite de sono.</p>
 
         <div class="buy-section" fxLayout="row wrap" fxLayoutAlign="space-around center">
-            <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card mt-5 py-4 text-center" fxLayout="column" fxLayoutAlign="center center">
+            <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card mt-5 py-4 text-center" fxLayout="column"
+                fxLayoutAlign="center center">
                 <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
                 <p class="px-3">Travesseiro Zen Sleep Dynamic Cell&trade; {{pillow.name}}</p>
                 <a class="btn bg-highlight">Comprar</a>
+                <a class="text-underline mt-3">Saiba mais</a>
             </div>
         </div>
+    </div>
+</div>
+
+<div id="long-text" class="container py-5">
+    <div class="card text-center p-5">
+        <img src="../assets/images/home/bola-shadowed@2x.png" alt="Tecnologia Dynamic Cell">
+        <p>
+            Desenvolvidos com a exclusiva espuma de última geração Dynamic Cell&trade; os travesseiros Zen Sleep, oferecem a
+            combinação perfeita entre maciez e o suporte ideal para a cabeça e o pescoço. 
+        </p>
+        <p>
+            Seu design ergonômico e único proporciona alívio nos pontos de tensão da cabeça e garantem um fluxo de ar contínuo mantendo a temperatura
+            do travesseiro sempre regulada para uma noite de sono muito mais confortável. 
+        </p>
+        <p>
+            Os produtos Zen Sleep são fabricados no Brasil, com os mais altos padrões de qualidade, utilizando matérias primas sustentáveis,
+            combinando inovação e sofisticação, para proporcionar uma experiência realmente única e especial.
+        </p>
     </div>
 </div>
 
