@@ -54,6 +54,19 @@ $yellow: #FFA31A;
 
 .bg-highlight {
     background-color: $yellow;
-    font-size: 18px;
+}
+
+.btn.bg-highlight {
     padding: 0 40px;
+    font-size: 18px;
+    color: #2E2E2E;
+    border-radius: 30px;
+}
+
+.buy-section {
+    .card {
+        background-color: #2E2E2E;
+        border: none;
+        border-radius: 20px;
+    }
 }
