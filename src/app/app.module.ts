@@ -11,11 +11,13 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { MaterialImports } from './shared/consts/material-imports';
+import { FaqComponent } from './pages/faq/faq.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FaqComponent,
     ErrorComponent
   ],
   imports: [

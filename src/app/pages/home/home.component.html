@@ -1,1 +1,113 @@
-<p>Página inicial</p>
+<div id="content">
+
+    <div id="header" class="py-5" fxLayout="column" fxLayoutAlign="center center">
+        <div class="container" fxLayoutAlign="space-between center" fxLayout="row">
+            <div id="logo">
+                <img width="70" src="../assets/images/branding/logo-principal.svg" alt="ZEN SLEEP">
+            </div>
+
+            <app-header-menu></app-header-menu>
+        </div>
+
+        <div class="py-5 my-5" id="carousel-wrapper" fxLayout="column">
+            <ngb-carousel *ngIf="images" [showNavigationIndicators]="false" [interval]="0">
+                <ng-template class="w-100" ngbSlide *ngFor="let image of images">
+                    <div fxLayoutAlign="center center" class=" text-center m-auto">
+                        <img class="w-100" [src]="image" alt="Random first slide">
+                    </div>
+                </ng-template>
+            </ngb-carousel>
+        </div>
+
+        <p class="text-uppercase" fxLayoutAlign="start sc" style="font-weight: 200;">
+            <mat-icon>expand_more</mat-icon> conheça os benefícios
+        </p>
+
+        <div class="container py-5" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="2%">
+
+            <div fxFlex="80" fxFlex.gt-xs="40">
+                <img class="w-100" src="../assets/images/home/sono-ruim-rounded6@2x.png" alt="Noite de sono ruim">
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-xs="58" fxLayout="column" fxLayoutAlign="start start">
+                <p class="main-text">Você já acordou com dores no corpo, se sentindo cansado ou sem energia?</p>
+                <p class="paragraph" style="font-weight: 300;">Ou tem dificuldades para dormir a noite? <br>Saiba que
+                    você não está sozinho.
+                    De acordo com uma pesquisa recente* cerca de 72% da população brasileira diz ter algum tipo de
+                    dificuldade ou distúrbio que lhes impedem de ter um boa noite de sono, impactando diretamente no
+                    bem-estar e na qualidade de vida.</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="container text-center my-5" fxLayout="column" fxLayoutGap="10%">
+
+    <img class="w-100" src="../assets/images/home/lavanda@2x.png" alt="Lavanda">
+
+    <span class="main-text">E se você pudesse dormir todas as noites experimentando a sensação única de relaxamento
+        e bem-estar do óleo essencial de Lavanda</span>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="text-center">
+        <div fxFlex="100" fxFlex.gt-sm="50">
+            <img src="../assets/images/home/ice@2x.png" alt="Carvão Ativado" class="w-100">
+        </div>
+        <span fxFlex="100" fxFlex.gt-sm="48" class="main-text lines">
+            <hr class="line">
+            ou se beneficiando das propriedades terapêuticas da Aloe Vera
+            <hr class="line">
+        </span>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="text-center">
+
+        <div class="d-flex d-md-none" fxFlex="100" fxFlex.gt-sm="50">
+            <img src="../assets/images/home/carvao@2x.png" alt="Carvão Ativado" class="w-100">
+        </div>
+        <span fxFlex="100" fxFlex.gt-sm="48" class="main-text lines">
+            <hr class="line">
+            ou ainda, das funcionalidades do Carvão Ativado?
+            <hr class="line">
+        </span>
+        <div class="d-none d-md-flex" fxFlex="100" fxFlex.gt-sm="50">
+            <img src="../assets/images/home/carvao@2x.png" alt="Carvão Ativado" class="w-100">
+        </div>
+    </div>
+</div>
+
+<div class="bg-dark py-5">
+    <div class="container" fxLayout="column" fxLayoutGap="2%">
+        <p class="main-text text-center">Conheça nossa linha completa de travesseiros e seus benefícios para uma
+            perfeita noite de sono.</p>
+
+        <div class="buy-section" fxLayout="row wrap" fxLayoutAlign="space-around center">
+            <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card mt-5 py-4 text-center" fxLayout="column"
+                fxLayoutAlign="center center">
+                <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
+                <p class="px-3">Travesseiro Zen Sleep <br> Dynamic Cell&trade; {{pillow.name}}</p>
+                <a class="btn bg-highlight">Comprar</a>
+                <a class="text-underline mt-3">Saiba mais</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="long-text" class="container py-5">
+    <div class="card text-center p-5">
+        <img src="../assets/images/home/bola-shadowed@2x.png" alt="Tecnologia Dynamic Cell">
+        <p>
+            Desenvolvidos com a exclusiva espuma de última geração Dynamic Cell&trade; os travesseiros Zen Sleep, oferecem a
+            combinação perfeita entre maciez e o suporte ideal para a cabeça e o pescoço. 
+        </p>
+        <p>
+            Seu design ergonômico e único proporciona alívio nos pontos de tensão da cabeça e garantem um fluxo de ar contínuo mantendo a temperatura
+            do travesseiro sempre regulada para uma noite de sono muito mais confortável. 
+        </p>
+        <p>
+            Os produtos Zen Sleep são fabricados no Brasil, com os mais altos padrões de qualidade, utilizando matérias primas sustentáveis,
+            combinando inovação e sofisticação, para proporcionar uma experiência realmente única e especial.
+        </p>
+    </div>
+</div>

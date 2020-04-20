@@ -1,5 +1,5 @@
 <div id="menu" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5%">
-    <a [routerLink]="['/']" routerLinkActive="highlight">Home</a>
+    <a [routerLink]="['/']" routerLinkActive="highlight" [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
     <a [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
     <a [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
