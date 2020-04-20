@@ -1,6 +1,5 @@
 $dark: #1B1B1B;
 $font-color: #9A9A9A;
-$yellow: #FFA31A;
 
 #content {
     color: $font-color;
@@ -50,17 +49,6 @@ $yellow: #FFA31A;
 .paragraph {
     font-size: 16px;
     line-height: 22px;
-}
-
-.bg-highlight {
-    background-color: $yellow;
-}
-
-.btn.bg-highlight {
-    padding: 0 40px;
-    font-size: 18px;
-    color: #2E2E2E;
-    border-radius: 30px;
 }
 
 .buy-section {

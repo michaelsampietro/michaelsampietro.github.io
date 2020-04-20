@@ -12,13 +12,19 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './shared/shared.module';
 import { MaterialImports } from './shared/consts/material-imports';
 import { FaqComponent } from './pages/faq/faq.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FaqComponent,
-    ErrorComponent
+    ErrorComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +34,15 @@ import { FaqComponent } from './pages/faq/faq.component';
     NgbCarouselModule,
     FontAwesomeModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
     MaterialImports
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always' } }
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

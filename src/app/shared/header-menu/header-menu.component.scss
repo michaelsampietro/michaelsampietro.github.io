@@ -11,6 +11,10 @@
 
 #menu-mobile {
 
+
+    mat-icon {
+        color: #9a9a9a;
+    }
     @media screen and (min-width: 600px) {
         display: none !important;
     }

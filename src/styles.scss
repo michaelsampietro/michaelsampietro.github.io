@@ -3,6 +3,7 @@
 @import "~bootstrap/scss/bootstrap";
 $dark: #1B1B1B;
 $grey: #9A9A9A;
+$yellow: #FFA31A;
 
 html, body {
     height: 100%;
@@ -29,4 +30,18 @@ a {
 
 .bg-dark {
     background-color: $dark;
+}
+
+.bg-highlight {
+    background-color: $yellow;
+}
+
+.btn.bg-highlight {
+    padding: 0 40px;
+    font-size: 18px;
+    color: #2E2E2E;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none;
 }

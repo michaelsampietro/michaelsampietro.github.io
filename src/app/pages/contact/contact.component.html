@@ -1,0 +1,59 @@
+<div style="min-height: 80vh;" class="py-5" fxLayoutAlign="start center">
+    <div class="container">
+        <p class="main-text mb-4">Contato</p>
+    
+        <div fxLayout="row wrap">
+            <div fxFlex="100" fxFlex.gt-sm="40">
+                <p class="font-weight-bold text-dark">Atendimento</p>
+                <p>
+                    <fa-icon [icon]="whatsAppIcon"></fa-icon> (11) 4622-2875
+                </p>
+                <p>
+                    <fa-icon [icon]="emailIcon"></fa-icon> atendimento@zensleep.com.br
+                </p>
+                <p>Seg a Sexta das 10h as 16h</p>
+                <hr class="float-left" style="width: 10%;">
+            </div>
+        
+            <div fxFlex="100" fxFlex.gt-sm="60">
+                <p class="font-weight-bold text-dark">Fale conosco</p>
+    
+                <form (ngSubmit)="send(contactForm.value)" class="mt-4" #form [formGroup]="contactForm">
+    
+                    <mat-form-field class="w-100 p-0">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Digite seu email*" type="email" autocomplete="email" formControlName="email">
+                        <mat-error *ngIf="email.touched && email.invalid || email.errors?.email">
+                          <span>Digite um endereço de e-mail válido.</span>
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field class="w-100">
+                        <mat-label>Assunto</mat-label>
+                        <input matInput placeholder="Assunto do contato*" type="text" formControlName="title">
+                        <mat-error *ngIf="title.touched && title.invalid">
+                          <span>Campo obrigatório.</span>
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field class="w-100">
+                        <mat-label>Mensagem</mat-label>
+                        <textarea matInput placeholder="Mensagem*" name="message" id="message" rows="20" formControlName="message"></textarea>
+                        <mat-error *ngIf="message.invalid && message.touched">
+                          <span>Campo obrigatório.</span>
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <div class="d-inline-flex w-100">
+                        <span class="text-muted" fxFlex="100">
+                            *Área de preenchimento obrigatório.
+                        </span>
+                        <div>
+                            <button mat-flat-button class="btn btn-rounded bg-highlight float-right" type="submit" [disabled]="contactForm.invalid">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

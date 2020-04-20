@@ -1,0 +1,29 @@
+.main-text {
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.text-dark {
+    color: #575757 !important;
+}
+
+input, textarea {
+    border-radius: 10px;
+    border: 1px solid rgba(154, 154, 154, .8);
+    height: 40px;
+    padding: 0 10px;
+    width: 100%;
+}
+
+textarea {
+    padding: 10px !important;
+    height: 150px;
+}
+
+::ng-deep .mat-form-field-underline {
+    display: none !important;
+}
+
+::ng-deep mat-label {
+    font-size: 16px;
+}
