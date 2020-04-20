@@ -1,1 +1,52 @@
-<p>footer works!</p>
+<div class="footer-wrapper">
+    <div id="footer">
+        <div class="container" fxLayout="column" fxLayoutAlign="start start">
+            <div id="footer-menu" fxFlexFill fxLayout="row" fxLayoutAlign="center center" class="py-2">
+                <a class="footer-item" href="">Home</a>
+                <a class="footer-item" href="">Produtos</a>
+                <a class="footer-item" href="">Loja</a>
+                <a class="footer-item" href="">FAQ</a>
+                <a class="footer-item" href="">Contato</a>
+            </div>
+            <div class="py-4" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
+                <div id="payment-methods" fxLayoutAlign="start center">
+                    Formas de pagamento:
+                    <img src="../../../assets/images/vendor/mastercard.png" alt="mastercard">
+                    <img src="../../../assets/images/vendor/visa.png" alt="visa">
+                    <img src="../../../assets/images/vendor/pagseguro.png" alt="pagseguro">
+                </div>
+                <div id="social-media" fxLayoutAlign="end center">
+                    Zen Sleep nas redes sociais: 
+                    <a href="https://www.instagram.com/" target="_blank">
+                        <fa-icon [icon]="instagramIcon"></fa-icon>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank">
+                        <fa-icon [icon]="facebookIcon"></fa-icon>
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-dark py-3">
+        <div class="container" fxLayout="row" fxLayoutAlign="space-between center">
+            <div id="about-wrapper" fxLayout="row" fxFlex.gt-sm="60" fxLayoutAlign="start center" fxLayoutGap="2%">
+                <img src="../../../assets/images/branding/logo-escura.svg" alt="Zen Sleep">
+                <p class="pt-2">Copyright&copy; Zen Sleep Todos os direitos reservados. CNPJ 35.558.713/0001-50 <br>
+                   Calçada Vitória Régia, 40 Alphaville Barueri/SP CEP 06453-057.</p>
+            </div>
+    
+            <div id="contact-wrapper" fxLayout="column">
+                <div class="d-inline-flex">
+                    <fa-icon class="pr-2" [icon]="whatsAppIcon"></fa-icon>
+                    <span>(11) 4622-2875</span>
+                </div>
+                <div class="d-inline-flex">
+                    <fa-icon class="pr-2" [icon]="emailIcon"></fa-icon>
+                    <span>atendimento@zensleep.com.br</span>    
+                </div>
+                <span>Seg a Sexta das 10h as 16h</span>
+            </div>
+        </div>
+    </div>
+</div>

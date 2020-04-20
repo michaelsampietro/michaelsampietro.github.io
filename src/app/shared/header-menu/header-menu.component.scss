@@ -26,3 +26,8 @@
     color: #FFA31A !important;
     font-weight: 600;
 }
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    color: currentColor;
+}

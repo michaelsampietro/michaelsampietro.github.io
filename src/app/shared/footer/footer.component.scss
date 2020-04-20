@@ -1,0 +1,38 @@
+.footer-wrapper{
+    color: #9A9A9A;
+}
+
+#footer {
+    #footer-menu {
+        border-bottom: 1px solid #eeeeee;
+    
+        a {
+            padding: 5px 30px;
+            color: #575757;
+    
+            &:not(:last-child) {
+                border-right: 1px solid #DEDEDE;
+            }
+        }
+    }
+    
+    #payment-methods {
+        img {
+            padding: 5px 15px
+        }
+    }
+    
+    #social-media {
+        fa-icon {
+            font-size: 22px;
+            padding: 5px;
+            color: #575757;
+        }
+    }
+}
+
+#about-wrapper {
+    p {
+        font-size: 12px;
+    }
+}
