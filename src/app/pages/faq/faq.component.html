@@ -1,1 +1,40 @@
-<p>faq works!</p>
+<div class="container py-5" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="2%">
+    <p class="main-text">Informação de produtos</p>
+    <p class="font-weight-bold text-dark">Orientações de uso, conservação e garantia</p>
+    <p>Selecione o produto para visualizar as orientações de uso e conservação e as informações de garantia legal:</p>
+
+    <div fxLayout="row wrap" class="w-100" fxLayoutAlign="start stretch">
+        <div *ngFor="let product of products" 
+            fxFlex="35"
+            fxFlex.gt-xs="23"
+            fxFlex.gt-sm="20"
+            class="card bg-light rounded-20 no-borders mt-5 mx-4 py-4 text-center faq" fxLayout="column"
+            fxLayoutAlign="center center">
+            <img [style]="product.style" [src]="product.image" alt="Travesseiro Zen Sleep {{product.name}}" >
+            <p class="px-3" [innerHTML]="product.name"></p>
+        </div>
+    </div>
+
+    <p class="main-text mb-3">FAQ</p>
+
+    <mat-accordion *ngFor="let faq of faqQuestions" class="example-headers-align mt-2">
+        <ul>
+            <li class="font-weight-bold text-uppercase text-dark">{{faq.section}}</li>
+        </ul>
+        <mat-expansion-panel style="border-radius: 12px; color: #9A9A9A"
+            class="card bg-light no-borders no-shadow rounded-20 my-3 py-2" #panel
+            *ngFor="let question of faq.questions" hideToggle>
+            <mat-expansion-panel-header class="w-100">
+                <mat-panel-title style="color: #575757; font-size: 18px; font-weight: 200;">
+                    {{question.question}}
+                </mat-panel-title>
+                <mat-panel-description>
+                    <mat-icon>{{panel.expanded ? 'remove' : 'add'}}</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            {{question.answer}}
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
