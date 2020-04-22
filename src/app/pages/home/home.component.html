@@ -77,22 +77,7 @@
     </div>
 </div>
 
-<div class="bg-dark py-5">
-    <div class="container" fxLayout="column" fxLayoutGap="2%">
-        <p class="main-text text-center">Conheça nossa linha completa de travesseiros e seus benefícios para uma
-            perfeita noite de sono.</p>
-
-        <div class="buy-section" fxLayout="row wrap" fxLayoutAlign="space-around center">
-            <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card mt-5 py-4 text-center" fxLayout="column"
-                fxLayoutAlign="center center">
-                <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
-                <p class="px-3">Travesseiro Zen Sleep <br> Dynamic Cell&trade; {{pillow.name}}</p>
-                <a class="btn bg-highlight btn-rounded">Comprar</a>
-                <a class="text-underline mt-3">Saiba mais</a>
-            </div>
-        </div>
-    </div>
-</div>
+<app-pillows></app-pillows>
 
 <div id="long-text" class="container py-5">
     <div class="card text-center p-5">

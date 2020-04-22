@@ -1,0 +1,26 @@
+#gallery {
+    overflow: hidden;
+
+    .thumbnail {
+        cursor: pointer;
+    }
+
+    img {
+        transition: all .2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        transform: translateX(0px);
+    
+        &.animate {
+            transform: translateX(1000px);
+        }
+    }
+}
+
+.product-name {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.capa-section {
+    background-color: #474545;
+}

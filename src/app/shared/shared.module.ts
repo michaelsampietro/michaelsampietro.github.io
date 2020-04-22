@@ -7,11 +7,13 @@ import { MaterialImports } from './consts/material-imports';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PillowsComponent } from './pillows/pillows.component';
 
 export const declarationsAndExports = [
   HeaderMenuComponent,
   HeaderComponent,
-  FooterComponent
+  FooterComponent,
+  PillowsComponent
 ];
 
 @NgModule({

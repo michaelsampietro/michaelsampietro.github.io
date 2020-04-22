@@ -31,11 +31,11 @@ a {
 }
 
 .bg-dark {
-    background-color: $dark;
+    background-color: $dark !important;
 }
 
 .bg-highlight {
-    background-color: $yellow;
+    background-color: $yellow !important;
 }
 
 .btn.bg-highlight {

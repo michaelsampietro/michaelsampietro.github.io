@@ -16,6 +16,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ProductComponent } from './pages/product/product.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     FaqComponent,
     ErrorComponent,
-    ContactComponent
+    ContactComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

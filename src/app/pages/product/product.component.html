@@ -1,0 +1,76 @@
+<div class="py-5" fxLayout="column">
+    <div fxLayout="row wrap" class="container">
+        <div id="gallery" fxFlex="100" fxFlex.gt-sm="70">
+
+            <div style="height: 250px;">
+                <img id="image" [src]="currentImage" alt="">
+            </div>
+
+            <div fxLayout="row" fxLayoutGap="2%">
+                <div class="card no-borders rounded-20 bg-light px-2 py-2 thumbnail" (click)="changeImage(image.image)"
+                    *ngFor="let image of selectedProduct.images">
+                    <div fxFlex="20%" fxLayoutAlign="start stretch" [ngStyle]="{
+                            'background-image': 'url(' + image.thumbnail + ')',
+                            'background-size': 'contain',
+                            'background-position': 'center',
+                            'background-repeat': 'no-repeat',
+                            'min-height': '50px',
+                            'min-width': '50px'
+                        }">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
+            <p>Travesseiro</p>
+            <p class="product-name text-dark" [innerHTML]="selectedProduct.name"></p>
+
+            <div class="frete-wrapper py-3">
+                <span>Calcular frete e prazo</span>
+                <form (ngSubmit)="calculateShippingFee()">
+                    <input type="text">
+                    <button type="submit">Ok</button>
+                </form>
+            </div>
+
+            <div class="price-wrapper">
+                <span>Subtotal:</span>
+                <p>{{selectedProduct.price | currency:'BRL'}}</p>
+
+                <span>Em até 12x de {{selectedProduct.price / 12 | currency:'BRL'}}</span><br>
+                <span>{{selectedProduct.price * .9 | currency:'BRL'}} à vista (10% de desconto)</span>
+            </div>
+
+            <button class="btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
+        </div>
+    </div>
+
+    <div class="bg-dark" style="height: 300px;" fxLayoutAlign="start center">
+        <div class="container">
+            <p class="product-name w-50">Exclusiva Espuma de ùltima Geração Dynamic Cell &trade;</p>
+        </div>
+    </div>
+
+    <div class="container py-5" fxLayout="column" fxLayoutGap="2%">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngFor="let section of selectedProduct.sections; let i=index;">
+            <div *ngIf="i % 2 === 0 || isMobile" fxFlex="100" fxFlex.gt-sm="50">
+                <img class="w-100" [src]="section.image" alt="">
+            </div>
+            <div fxFlex="100" fxFlex.gt-sm="50">
+                <p [innerHTML]="section.title" class="main-text"></p>
+                <p [innerHTML]="section.description"></p>
+            </div>
+            <div *ngIf="i % 2 !== 0 && !isMobile" fxFlex="100" fxFlex.gt-sm="50">
+                <img class="w-100" [src]="section.image" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="capa-section container py-3 px-5 no-borders rounded-20" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2%">
+        <div fxFlex="100" fxFlex.gt-sm="40">
+            <img width="100%" [src]="selectedProduct.capa.image" alt="">
+        </div>
+        <p fxFlex.gt-sm="30" class="main-text" style="float:left !important ;text-align: left !important;" [innerHTML]="selectedProduct.capa.title"></p>
+    </div>
+</div>
