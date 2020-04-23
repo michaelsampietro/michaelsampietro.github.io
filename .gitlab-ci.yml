@@ -13,6 +13,9 @@ production:
     stage: production
     image: gecko8/lite-server:latest
     script:
+        - npm install
+        - ng build --prod
+        - npm run dev
         - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
     only:
         - master
