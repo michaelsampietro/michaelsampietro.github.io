@@ -21,6 +21,36 @@
     line-height: 32px;
 }
 
+.product-info {
+    hr {
+        border-color: #F5F5F5
+    }
+
+    form {
+        input {
+            padding: 7px 15px;
+            border: 1px solid #F5F5F5;
+            border-radius: 30px;
+            margin-right: -30px;
+        }
+    
+        button {
+            border-radius: 30px;
+            border: none;
+            background-color: #777777;
+            color: #fff;
+            padding: 1px 0;
+
+            &:disabled {
+                background-color: #eee
+            }
+        }
+    }
+}
+
+
+
+
 .capa-section {
     background-color: #474545;
 }

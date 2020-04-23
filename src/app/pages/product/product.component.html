@@ -1,4 +1,4 @@
-<div class="py-5" fxLayout="column">
+<div class="pt-5" fxLayout="column">
     <div fxLayout="row wrap" class="container">
         <div id="gallery" fxFlex="100" fxFlex.gt-sm="70">
 
@@ -22,17 +22,34 @@
             </div>
 
         </div>
-        <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
+        <div class="product-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
             <p>Travesseiro</p>
             <p class="product-name text-dark" [innerHTML]="selectedProduct.name"></p>
 
-            <div class="frete-wrapper py-3">
-                <span>Calcular frete e prazo</span>
-                <form (ngSubmit)="calculateShippingFee()">
-                    <input type="text">
-                    <button type="submit">Ok</button>
+            <hr class="w-75 ml-0 mb-0">
+
+            <div *ngIf="shippingCost === 0" class="frete-wrapper py-3">
+                <p class="text-dark">Calcular frete e prazo</p>
+                <form [formGroup]="shippingForm" (ngSubmit)="calculateShippingFee()">
+                    <input matInput formControlName="zip" placeholder="Digite o CEP" type="text">
+                    <button mat-flat-button type="submit" [disabled]="shippingForm.invalid">Ok</button>
                 </form>
             </div>
+
+            <div *ngIf="shippingCost > 0" fxLayout="column" class="frete-wrapper py-3">
+                <div (click)="clearShipping()" class="text-dark text" style="cursor: pointer;">
+                    <mat-icon style="font-size: 16px;">location_on</mat-icon>
+                    <u>CEP: {{shippingForm.value.zip}}</u>
+                </div>
+                
+                <span class="ml-4">Receber em até</span>
+                <div fxLayout="row" fxLayoutGap="5%" class="text-dark font-weight-bold ml-4">
+                    <p>9 dias úteis</p>
+                    <p>{{shippingCost | currency:'BRL'}}</p>
+                </div >
+            </div>
+
+            <hr class="w-75 ml-0 mt-1">
 
             <div class="price-wrapper">
                 <span>Subtotal:</span>
@@ -53,11 +70,12 @@
     </div>
 
     <div class="container py-5" fxLayout="column" fxLayoutGap="2%">
-        <div fxLayout="row wrap" fxLayoutAlign="space-between center" *ngFor="let section of selectedProduct.sections; let i=index;">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center"
+            *ngFor="let section of selectedProduct.sections; let i=index;">
             <div *ngIf="i % 2 === 0 || isMobile" fxFlex="100" fxFlex.gt-sm="50">
                 <img class="w-100" [src]="section.image" alt="">
             </div>
-            <div fxFlex="100" fxFlex.gt-sm="50">
+            <div fxFlex="100" fxFlex.gt-sm="50" [ngClass]="i % 2 !== 0 && !isMobile ? 'text-right' : 'text-left'">
                 <p [innerHTML]="section.title" class="main-text"></p>
                 <p [innerHTML]="section.description"></p>
             </div>
@@ -67,10 +85,68 @@
         </div>
     </div>
 
-    <div class="capa-section container py-3 px-5 no-borders rounded-20" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2%">
+    <div class="capa-section container py-3 px-5 no-borders rounded-20" fxLayout="row wrap"
+        fxLayoutAlign="center center" fxLayoutGap="2%">
         <div fxFlex="100" fxFlex.gt-sm="40">
             <img width="100%" [src]="selectedProduct.capa.image" alt="">
         </div>
-        <p fxFlex.gt-sm="30" class="main-text" style="float:left !important ;text-align: left !important;" [innerHTML]="selectedProduct.capa.title"></p>
+        <p fxFlex.gt-sm="30" class="main-text" style="float:left !important ;text-align: left !important;"
+            [innerHTML]="selectedProduct.capa.title"></p>
+    </div>
+
+    <div style="background-color: #2E2E2E;" class="py-5">
+        <div class="container" fxLayout="row wrap" fxLayoutAlign="space-between center">
+            <div fxLayout="column" fxLayoutGap="5%" fxFlex="100" fxFlex.gt-sm="40" class="py-2">
+                <div>
+                    <img class="w-100" src="../../../assets/images/product/wire-side@2x.png" alt="">
+                </div>
+                <div>
+                    <img class="w-100" src="../../../assets/images/product/wire-top@2x.png" alt="">
+                </div>
+            </div>
+            <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" class="py-2">
+                <p class="main-text">Detalhes</p>
+                <p>
+                    A exclusiva espuma de Última Geração Dynamic Cell ™ oferece uma sensação única de conforto, maciez e
+                    suporte para uma noite de sono relaxante e um despertar revigorante.</p>
+
+                <p>
+                    Seu design ergonômico e único oferece o suporte adequado para a cabeça e o pescoço, proporcionando
+                    alívio nos pontos de tensão da cabeça, além de garantir um fluxo contínuo de ar, mantendo a
+                    temperatura do travesseiro sempre regulada para uma noite de sono mais confortável e agradável.
+                </p>
+
+                <p>
+                    A inovadora tecnologia de infusão com carvão ativado orgânico, conhecido pela característica de
+                    reter impurezas em seus poros, inibi a formação de ácaros e bactérias fazendo deste um travesseiro
+                    naturalmente antialérgico e indicado para pessoas com alergias.
+                </p>
+
+                <p>
+                    Além disso, o carvão ativado orgânico possui diversos benefícios, como auxiliar na remoção de
+                    odores, na absorção do excesso de umidade corporal e atuando na manutenção da temperatura do
+                    travesseiro enquanto você dorme, para proporcionar uma noite de sono perfeita.
+                </p>
+
+                <p>
+                    O travesseiro Zen Sleep é produzido no Brasil, utilizando matérias primas de alta qualidade, e a
+                    última tecnologia de gás HFO FLEXX ECO que não agride e protege o meio ambiente e a camada de
+                    ozônio.
+                </p>
+
+                <p>
+                    Os travesseiros Zen podem ser lavados e acompanham uma capa protetora, produzida em tecido de
+                    Algodão 100% Natural.
+                </p>
+
+                <p>
+                    Este travesseiro é indicado para todos os tipos de posições e preferencias de dormir.
+                </p>
+
+                <p class="mt-2"><b>Garantia: 1 ano</b></p>
+
+            </div>
+        </div>
     </div>
 </div>
+<app-pillows></app-pillows>

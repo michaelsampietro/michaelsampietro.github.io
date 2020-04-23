@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, carbon } from 'src/models/product';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -13,16 +13,21 @@ export class ProductComponent implements OnInit {
   images: string[] = [];
   currentImage = '';
   selectedProduct: Product = null;
-  zipCode: FormGroup;
+  shippingForm: FormGroup;
   isMobile = false;
+  shippingCost = 0;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) {
 
     this.route.params.subscribe(param => {
       console.log(param.model);
       if (param.model === 'carbon' || !param.model) {
         this.selectedProduct = carbon;
       }
+    });
+
+    this.shippingForm = this.formBuilder.group({
+      zip: ['', Validators.required]
     });
 
     this.currentImage = this.selectedProduct.images[0].image;
@@ -47,6 +52,11 @@ export class ProductComponent implements OnInit {
 
   calculateShippingFee() {
     console.log('frete ');
+    this.shippingCost = 14.99;
+  }
+
+  clearShipping() {
+    this.shippingCost = 0;
   }
 
   private mobileCheck(listener: boolean = false) {

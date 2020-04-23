@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProductComponent } from './pages/product/product.component';
+import { registerLocaleData } from '@angular/common';
 
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { ProductComponent } from './pages/product/product.component';
     MaterialImports
   ],
   providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always' } }
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always' } },
+    { provide: LOCALE_ID, useValue: 'pt' }
   ],
   bootstrap: [AppComponent],
 })
