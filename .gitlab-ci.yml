@@ -1,0 +1,18 @@
+image: lite-server:latest
+
+before_script:
+    - npm install
+    - ng build --prod
+    - npm run dev
+
+stages:
+    - production
+
+production:
+    type: deploy
+    stage: production
+    image: lite-server:latest
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
+    only:
+        - master
