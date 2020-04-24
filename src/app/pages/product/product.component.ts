@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product, carbon } from 'src/models/product';
+import { ProductPage, carbon } from 'src/models/product-page';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
+import { Product } from 'src/models/product';
 
 @Component({
   selector: 'app-product',
@@ -12,12 +14,14 @@ export class ProductComponent implements OnInit {
 
   images: string[] = [];
   currentImage = '';
-  selectedProduct: Product = null;
+  selectedProduct: ProductPage = null;
   shippingForm: FormGroup;
   isMobile = false;
   shippingCost = 0;
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) {
+  constructor(private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private cartService: CartService) {
 
     this.route.params.subscribe(param => {
       console.log(param.model);
@@ -57,6 +61,18 @@ export class ProductComponent implements OnInit {
 
   clearShipping() {
     this.shippingCost = 0;
+  }
+
+  addToCart(product: ProductPage) {
+    const prod: Product = {
+      id: product.productId,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      thumbnail: product.images[0].image
+    };
+
+    this.cartService.add(prod, 1);
   }
 
   private mobileCheck(listener: boolean = false) {

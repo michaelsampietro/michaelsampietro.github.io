@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 export const MaterialImports = [
   MatToolbarModule,
@@ -13,5 +14,6 @@ export const MaterialImports = [
   MatIconModule,
   MatExpansionModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule,
 ];

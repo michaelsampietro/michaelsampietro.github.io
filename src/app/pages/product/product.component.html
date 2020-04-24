@@ -59,7 +59,7 @@
                 <span>{{selectedProduct.price * .9 | currency:'BRL'}} à vista (10% de desconto)</span>
             </div>
 
-            <button class="btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
+            <button (click)="addToCart(selectedProduct)" class="btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
         </div>
     </div>
 

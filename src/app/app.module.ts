@@ -19,6 +19,8 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatInputModule } from '@angular/material/input';
 import { ProductComponent } from './pages/product/product.component';
 import { registerLocaleData } from '@angular/common';
+import { CartComponent } from './pages/cart/cart.component';
+import { MatTableModule } from '@angular/material/table';
 
 registerLocaleData(localePt, 'pt');
 
@@ -29,7 +31,8 @@ registerLocaleData(localePt, 'pt');
     FaqComponent,
     ErrorComponent,
     ContactComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+.quantity {
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 1px 1px;
+    
+    mat-icon {
+        color: #9A9A9A;
+    }
+
+    input {
+        width: 20px;
+        border: none;
+    }
+}
