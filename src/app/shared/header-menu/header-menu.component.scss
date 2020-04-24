@@ -13,11 +13,16 @@
 
 
     mat-icon {
-        color: #9a9a9a;
+        color: #9a9a9a !important;
     }
+    
     @media screen and (min-width: 600px) {
         display: none !important;
     }
+}
+
+.mat-menu-item .mat-icon-no-color {
+    color: currentColor !important;
 }
 
 .mat-menu-panel {

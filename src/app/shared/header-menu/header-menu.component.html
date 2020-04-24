@@ -1,8 +1,14 @@
-<div id="menu" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="5%">
-    <a [routerLink]="['/']" routerLinkActive="highlight" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
-    <a [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
-    <a [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
+<div id="menu" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10%">
+    <div fxLayoutAlign="space-between center" fxLayoutGap="10px">
+        <a [routerLink]="['/']" routerLinkActive="highlight" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <a [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
+        <a [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
+        <a [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
+    </div>
+    <div fxLayoutAlign="space-between center" fxLayoutGap="10px">
+        <a [routerLink]="['/buscar']" routerLinkActive="highlight"><mat-icon>search</mat-icon></a>
+        <a [routerLink]="['/sacola']" routerLinkActive="highlight"><mat-icon>local_mall</mat-icon></a>
+    </div>
 </div>
 
 <div id="menu-mobile">
@@ -12,5 +18,11 @@
         <a mat-menu-item [routerLink]="['/produtos']" routerLinkActive="highlight">Produtos</a>
         <a mat-menu-item [routerLink]="['/faq']" routerLinkActive="highlight">FAQ</a>
         <a mat-menu-item [routerLink]="['/contato']" routerLinkActive="highlight">Contato</a>
+        <a mat-menu-item [routerLink]="['/contato']" routerLinkActive="highlight">
+            <mat-icon>search</mat-icon> Buscar
+        </a>
+        <a mat-menu-item [routerLink]="['/contato']" routerLinkActive="highlight">
+            <mat-icon>local_mall</mat-icon> Sacola
+        </a>
     </mat-menu>
 </div>
