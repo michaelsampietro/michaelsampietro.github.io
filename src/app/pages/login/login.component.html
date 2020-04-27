@@ -1,0 +1,26 @@
+<div class="container py-5">
+    <div class="py-5" fxLayout="column" fxLayoutAlign="center center" class="w-100">
+        <form [formGroup]="loginForm"
+        fxFlex="100"
+        fxFlex.gt-sm="50"
+        fxLayout="column" 
+        fxLayoutAlign="center center"
+        fxLayoutGap="10px">
+    
+        <mat-form-field appearance="none">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [formControl]="email" required>
+            <mat-error *ngIf="email.touched && email.errors">Insira um endereço de email válido.</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="none">
+            <mat-label>Senha</mat-label>
+            <input matInput type="password" [formControl]="password" required>
+            <mat-error *ngIf="email.touched && email.errors">Campo obrigatório.</mat-error>
+        </mat-form-field>
+        
+            <button (click)="login()" class="btn bg-highlight m-auto rounded-20" type="submit" [disabled]="!loginForm.valid">Entrar</button>
+            <p>Não possui conta? <a [routerLink]="['/cadastro']"><u>Crie sua conta aqui</u></a></p>
+        </form>
+    </div>
+</div>

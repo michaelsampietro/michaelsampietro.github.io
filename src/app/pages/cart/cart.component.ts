@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Cart } from 'src/models/cart';
 import { Product } from 'src/models/product';
+import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +15,9 @@ export class CartComponent implements OnInit {
   displayedColumns = ['thumbnail', 'name', 'quantity', 'price'];
   cart: Cart = null;
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,
+              private userService: UserService,
+              private router: Router) {
     this.cart = this.cartService.getCart();
   }
 
@@ -33,6 +37,14 @@ export class CartComponent implements OnInit {
   delete(product: Product) {
     this.cartService.remove(product);
     this.refreshCart();
+  }
+
+  redirect() {
+    if (this.userService.isLogged()) {
+      this.router.navigate(['/pagamento']);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   private refreshCart() {

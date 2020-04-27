@@ -6,6 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 export const MaterialImports = [
   MatToolbarModule,
@@ -16,4 +19,7 @@ export const MaterialImports = [
   MatFormFieldModule,
   MatInputModule,
   MatTableModule,
+  MatDatepickerModule,
+  MatCheckboxModule,
+  MatRadioModule,
 ];

@@ -107,3 +107,20 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield;
 }
+
+
+mat-form-field {
+    width: 100%;
+
+    input {
+        height: 40px;
+        width: 100%;
+        border: 1px solid #EBEBEB !important;
+        border-radius: 10px;
+        padding: 0 10px !important;
+    }
+}
+
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: $yellow !important; /* Red background for example */
+}

@@ -15,13 +15,18 @@ import { MaterialImports } from './shared/consts/material-imports';
 import { FaqComponent } from './pages/faq/faq.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ProductComponent } from './pages/product/product.component';
 import { registerLocaleData } from '@angular/common';
 import { CartComponent } from './pages/cart/cart.component';
-import { MatTableModule } from '@angular/material/table';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { EnderecoComponent } from './pages/endereco/endereco.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
+export let options: Partial<IConfig> | (() => Partial<IConfig>);
 registerLocaleData(localePt, 'pt');
 
 @NgModule({
@@ -32,7 +37,11 @@ registerLocaleData(localePt, 'pt');
     ErrorComponent,
     ContactComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent,
+    CadastroComponent,
+    EnderecoComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +53,8 @@ registerLocaleData(localePt, 'pt');
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
+    MatNativeDateModule,
+    NgxMaskModule.forRoot(),
     MaterialImports
   ],
   providers: [
