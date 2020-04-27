@@ -7,55 +7,96 @@
         <u>Continuar comprando</u>
     </a>
 
-    <table mat-table [dataSource]="cart.products" class="mat-elevation-z8">
-        <ng-container matColumnDef="thumbnail">
-            <th mat-header-cell *matHeaderCellDef> Produto </th>
-            <td mat-cell 
-                *matCellDef="let element"
-                class="thumbnail py-3"
-                fxLayout="row"
-                fxLayoutAlign="start center"
-                fxLayoutGap="2%">
+    <div class="cart-body" fxLayout="row wrap" fxLayoutAlign="space-between">
+        <div fxFlex="100" fxFlex.gt-sm="68" fxLayout="column">
+            <table class="mt-3" style="width: 100%;" mat-table [dataSource]="cart.products">
+                <ng-container matColumnDef="thumbnail">
+                    <th mat-header-cell *matHeaderCellDef> Produto </th>
+                    <td mat-cell 
+                        *matCellDef="let element"
+                        class="thumbnail py-3 d-table-cell">
+        
+                        <div style="max-width: 120px;">
+                            <img class="w-100" [src]="element.thumbnail" [alt]="element.name">
+                        </div>
+                        <p class="d-table-cell d-md-none" style="color: #9A9A9A;" [innerHTML]="element.name"></p>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="name">
+                    <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef></th>
+                    <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element">
+                        <span [innerHTML]="element.name"></span>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="quantity">
+                    <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="quantity d-inline-flex">
+                            <button (click)="removeOne(element)" [disabled]="element.quantity <= 1" mat-icon-button class="plus-btn" type="button" name="button">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                            <input type="number" name="quantity" [value]="element.quantity">
+                            <button (click)="addOne(element)" mat-icon-button class="minus-btn" type="button" name="button">
+                                <mat-icon>add</mat-icon>
+                            </button>
+                        </div>
+                        <p style="cursor: pointer;" class="text-center" (click)="delete(element)"><u>Remover</u></p>
+                    </td>
+                </ng-container>
+        
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Sub-total </th>
+                    <td mat-cell *matCellDef="let element" style="color: #9A9A9A; font-weight: 800;"> {{element.price | currency:'BRL'}} </td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
 
-                <img [src]="element.thumbnail" [alt]="element.name">
-                <p class="d-table-cell d-md-none" [innerHTML]="element.name"></p>
-            </td>
-        </ng-container>
+            <p class="font-weight-bold text-dark">Calcular frete e prazo</p>
+            <p class="font-weight-bold text-dark">Calcular frete e prazo</p>
+        </div>
+        
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th class="d-none d-md-table-cell" mat-header-cell *matHeaderCellDef></th>
-            <td class="d-none d-md-table-cell" mat-cell *matCellDef="let element">
-                <span [innerHTML]="element.name"></span>
-            </td>
-        </ng-container>
+        <div fxFlex="100"
+             fxFlex.gt-sm="30"
+             fxLayout="column"
+             class="card-resumo text-center">
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="quantity">
-            <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-            <td mat-cell *matCellDef="let element">
-                <div class="quantity d-inline-flex">
-                    <button (click)="removeOne(element)" [disabled]="element.quantity <= 1" mat-icon-button class="plus-btn" type="button" name="button">
-                        <mat-icon>remove</mat-icon>
-                    </button>
-                    <input type="number" name="quantity" [value]="element.quantity">
-                    <button (click)="addOne(element)" mat-icon-button class="minus-btn" type="button" name="button">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                </div>
-                <p style="cursor: pointer;" class="text-center" (click)="delete(element)"><u>Remover</u></p>
-            </td>
-        </ng-container>
+            <h1>Resumo do pedido</h1>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Sub-total </th>
-            <td mat-cell *matCellDef="let element"> {{element.price | currency:'BRL'}} </td>
-        </ng-container>
+            <hr class="w-75 m-auto">
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+            <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
+                <span>1 produto</span>
+                <span>{{ 0 | currency:'BRL'}}</span>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
+                <span>Frete</span>
+                <span>{{ 0 | currency:'BRL'}}</span>
+            </div>
+
+            <hr class="w-75 m-auto">
+
+            <div class="font-weight text-dark w-75 font-weight-bold m-auto" style="font-size: 22px;" fxLayoutAlign="space-between">
+                <span>Total</span>
+                <span>{{0 | currency:'BRL'}}</span>
+            </div>
+
+            <div class="w-75 m-auto" >
+                <span fxLayoutAlign="end">Em até 23x de {{123 | currency:'BRL'}}</span>
+                <span fxLayoutAlign="end">{{123 | currency:'BRL'}} à vista</span>
+                <span fxLayoutAlign="end">(10% de desconto)</span>
+            </div>
+
+            <button class="btn bg-highlight btn-rounded m-auto px-4">Continuar</button>
+
+        </div>
+    </div>
+
 
 
 

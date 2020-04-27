@@ -1,14 +1,47 @@
-.quantity {
-    border: 1px solid #eee;
-    border-radius: 20px;
-    padding: 1px 1px;
-    
-    mat-icon {
-        color: #9A9A9A;
+$font-color: #9A9A9A;
+
+.cart-body {
+    > div {
+        margin-top: 30px;
+    }
+}
+
+table {
+
+    box-shadow: none;
+
+    .mat-header-cell {
+        color: $font-color !important;
+        font-weight: 600 !important;
+        border-bottom: 1px solid #F5F5F5;
     }
 
-    input {
-        width: 20px;
-        border: none;
+    .mat-cell {
+        border-bottom: 1px solid #F5F5F5;
+    }
+
+    .quantity {
+        border: 1px solid #eee;
+        border-radius: 20px;
+        padding: 1px 1px;
+        
+        mat-icon {
+            color: $font-color;
+        }
+    
+        input {
+            width: 20px;
+            border: none;
+        }
+    }
+}
+
+.card-resumo {
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 1px solid #EBEBEB;
+
+    * {
+        margin: 10px 0;
     }
 }
