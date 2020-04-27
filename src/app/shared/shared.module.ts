@@ -8,12 +8,15 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PillowsComponent } from './pillows/pillows.component';
+import { ShippingComponent } from './shipping/shipping.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const declarationsAndExports = [
   HeaderMenuComponent,
   HeaderComponent,
   FooterComponent,
-  PillowsComponent
+  PillowsComponent,
+  ShippingComponent
 ];
 
 @NgModule({
@@ -24,6 +27,8 @@ export const declarationsAndExports = [
     RouterModule,
     FlexLayoutModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialImports
   ]
 })

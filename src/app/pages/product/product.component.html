@@ -28,26 +28,7 @@
 
             <hr class="w-75 ml-0 mb-0">
 
-            <div *ngIf="shippingCost === 0" class="frete-wrapper py-3">
-                <p class="text-dark">Calcular frete e prazo</p>
-                <form [formGroup]="shippingForm" (ngSubmit)="calculateShippingFee()">
-                    <input matInput formControlName="zip" placeholder="Digite o CEP" type="text">
-                    <button mat-flat-button type="submit" [disabled]="shippingForm.invalid">Ok</button>
-                </form>
-            </div>
-
-            <div *ngIf="shippingCost > 0" fxLayout="column" class="frete-wrapper py-3">
-                <div (click)="clearShipping()" class="text-dark text" style="cursor: pointer;">
-                    <mat-icon style="font-size: 16px;">location_on</mat-icon>
-                    <u>CEP: {{shippingForm.value.zip}}</u>
-                </div>
-                
-                <span class="ml-4">Receber em até</span>
-                <div fxLayout="row" fxLayoutGap="5%" class="text-dark font-weight-bold ml-4">
-                    <p>9 dias úteis</p>
-                    <p>{{shippingCost | currency:'BRL'}}</p>
-                </div >
-            </div>
+            <app-shipping></app-shipping>
 
             <hr class="w-75 ml-0 mt-1">
 
