@@ -9,6 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export const MaterialImports = [
   MatToolbarModule,
@@ -22,4 +24,6 @@ export const MaterialImports = [
   MatDatepickerModule,
   MatCheckboxModule,
   MatRadioModule,
+  MatDialogModule,
+  MatProgressSpinnerModule
 ];

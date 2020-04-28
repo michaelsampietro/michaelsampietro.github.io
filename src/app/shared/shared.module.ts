@@ -10,13 +10,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PillowsComponent } from './pillows/pillows.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
 
-export const declarationsAndExports = [
+const declarationsAndExports = [
   HeaderMenuComponent,
   HeaderComponent,
   FooterComponent,
   PillowsComponent,
-  ShippingComponent
+  ShippingComponent,
+  LoaderComponent
 ];
 
 @NgModule({

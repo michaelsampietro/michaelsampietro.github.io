@@ -47,7 +47,7 @@
             <mat-checkbox class="w-100" [formControl]="emailAlerts">Desejo receber ofertas por email</mat-checkbox>
         </div>
 
-        <button class="btn bg-highlight btn-rounded" type="submit">Continuar</button>
-        <p>Já possui cadastro? <a [routerLink]="['/login']"><u>Entre por aqui</u></a></p>
+        <button class="btn bg-highlight btn-rounded m-auto" type="submit" [disabled]="!cadastroForm.valid">Continuar</button>
+        <p class="pt-3 m-auto">Já possui cadastro? <a [routerLink]="['/login']"><u>Entre por aqui</u></a></p>
     </form>
 </div>

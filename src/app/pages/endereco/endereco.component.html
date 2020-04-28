@@ -1,1 +1,75 @@
-<p>endereco works!</p>
+<div class="container py-5">
+    <form class="m-auto" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px" [formGroup]="enderecoForm"
+        (ngSubmit)="saveAddress(enderecoForm.value)">
+
+        <mat-form-field appearance="none">
+            <mat-label class="label">Nome do destinatário</mat-label>
+            <input matInput type="email" [formControl]="name" required>
+            <mat-error *ngIf="name.touched && name.errors">Campo obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="none">
+            <mat-label class="label">CEP</mat-label>
+            <input matInput (keyup)="checkCEP(cep.value)" type="text" [mask]="'00000-000'" [formControl]="cep" required>
+            <u class="text-right d-block text-dark">
+                <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Não sei meu CEP</a>                
+            </u>
+            <mat-error *ngIf="cep.touched && cep.errors">Campo obrigatório.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="none">
+            <mat-label class="label">Endereço</mat-label>
+            <input matInput readonly type="text" [formControl]="address" [value]="address.value" required>
+            <mat-error *ngIf="address.touched && address.errors">Campo obrigatório.</mat-error>
+        </mat-form-field>
+        
+        <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="48">
+                <mat-form-field appearance="none">
+                    <mat-label class="label">Número</mat-label>
+                    <input matInput type="text" [formControl]="number" required>
+                    <mat-error *ngIf="number.touched && number.errors">Campo obrigatório.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="48">
+                <mat-form-field appearance="none">
+                    <mat-label class="label">Complemento</mat-label>
+                    <input matInput type="text" [formControl]="complement" placeholder="Ex: Ap. XX, Casa X">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <mat-form-field appearance="none">
+            <mat-label class="label">Ponto de referência</mat-label>
+            <input matInput type="text" [formControl]="reference">
+        </mat-form-field>
+
+        <mat-form-field appearance="none">
+            <mat-label class="label">Bairro</mat-label>
+            <input matInput readonly type="text" [formControl]="neighbourhood" required>
+            <mat-error *ngIf="neighbourhood.touched && neighbourhood.errors">Campo obrigatório.</mat-error>
+        </mat-form-field>
+
+        <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="68">
+                <mat-form-field appearance="none">
+                    <mat-label class="label">Cidade</mat-label>
+                    <input matInput type="text" [formControl]="city" required readonly>
+                    <mat-error *ngIf="city.touched && city.errors">Campo obrigatório.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="28">
+                <mat-form-field appearance="none">
+                    <mat-label class="label">Estado</mat-label>
+                    <input matInput type="text" [formControl]="state" required readonly>
+                    <mat-error *ngIf="state.touched && state.errors">Campo obrigatório.</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <button class="btn bg-highlight btn-rounded m-auto" type="submit"
+            [disabled]="!enderecoForm.valid">Continuar</button>
+    </form>
+</div>

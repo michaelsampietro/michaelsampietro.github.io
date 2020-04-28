@@ -11,6 +11,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { EnderecoComponent } from './pages/endereco/endereco.component';
 import { LoginGuard } from './guards/login.guard';
+import { CheckoutGuard } from './guards/checkout.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -21,13 +22,13 @@ export const routes: Routes = [
   { path: 'contato', component: ContactComponent, pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [LoginGuard]},
   { path: 'cadastro', component: CadastroComponent, pathMatch: 'full', canActivate: [LoginGuard] },
-  { path: 'endereco', component: EnderecoComponent, pathMatch: 'full' },
-  { path: 'pagamento', component: CheckoutComponent, pathMatch: 'full' },  { path: '**', component: ErrorComponent },
+  { path: 'endereco', component: EnderecoComponent, pathMatch: 'full'},
+  { path: 'pagamento', component: CheckoutComponent, pathMatch: 'full', canActivate: [CheckoutGuard] },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [LoginGuard]
 })
 export class AppRoutingModule {}

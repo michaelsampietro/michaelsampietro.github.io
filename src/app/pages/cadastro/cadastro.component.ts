@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from 'src/models/user';
 import { UserService } from 'src/app/services/user/user.service';
+import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/services/loader/loader.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,7 +14,9 @@ export class CadastroComponent implements OnInit {
 
   cadastroForm: FormGroup = null;
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private userService: UserService,
+              private loaderService: LoaderService,
+              private router: Router) {
     this.cadastroForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
@@ -29,11 +33,21 @@ export class CadastroComponent implements OnInit {
   }
 
   register(values: any) {
-    console.log(values);
+    const loader = this.loaderService.open();
     const user = values as User;
-    user.birth = values.birth.getTime();
+    const birth = new Date(values.birth);
+    user.birth = birth.getTime();
     user.id = new Date().getTime();
-    console.log(user);
+
+    const success = this.userService.register(user);
+
+    if (success) {
+      loader.close();
+      this.router.navigate(['/endereco']);
+    } else {
+      alert('Erro no cadastro. Por favor, revise os dados.');
+      loader.close();
+    }
   }
 
   // getters

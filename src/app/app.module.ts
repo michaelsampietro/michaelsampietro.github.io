@@ -25,6 +25,9 @@ import { EnderecoComponent } from './pages/endereco/endereco.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { LoginGuard } from './guards/login.guard';
+import { CheckoutGuard } from './guards/checkout.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 registerLocaleData(localePt, 'pt');
@@ -50,6 +53,7 @@ registerLocaleData(localePt, 'pt');
     FlexLayoutModule,
     NgbCarouselModule,
     FontAwesomeModule,
+    HttpClientModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
@@ -59,7 +63,9 @@ registerLocaleData(localePt, 'pt');
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always' } },
-    { provide: LOCALE_ID, useValue: 'pt' }
+    { provide: LOCALE_ID, useValue: 'pt' },
+    LoginGuard,
+    CheckoutGuard
   ],
   bootstrap: [AppComponent],
 })

@@ -8,8 +8,9 @@ export class UserService {
 
   constructor() { }
 
-  getUser(): User {
-    const user = JSON.parse(localStorage.getItem('user'));
+  getUser(): User | string {
+    // const user = JSON.parse(localStorage.getItem('user'));
+    const user = localStorage.getItem('user');
     return user;
   }
 
@@ -17,8 +18,19 @@ export class UserService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  login(credentials: { email: string, password: string}) {
+    localStorage.setItem('user', credentials.email);
+  }
+
+  register(user: User) {
+    // aqui deve enviar os dados para o backend e, apois isso salvar no localstorage o token.
+    localStorage.setItem('user', user.email); // Salvando email como exemplo
+    return true;
+
+    // se der erro na criação do usuario retornar falso;
+  }
+
   isLogged(): boolean{
-    console.log(this.getUser());
     return this.getUser() ? true : false;
   }
 }
