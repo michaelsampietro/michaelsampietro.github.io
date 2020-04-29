@@ -42,7 +42,8 @@ export class CartService {
   private createCart(): Cart {
     const cart = {
       id: new Date().getTime(),
-      products: []
+      products: [],
+      shipping: 10
     };
 
     localStorage.setItem('cart', JSON.stringify(cart));

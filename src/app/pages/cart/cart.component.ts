@@ -52,6 +52,19 @@ export class CartComponent implements OnInit {
     }
   }
 
+  getPrice(): number {
+    let totalPrice = 0;
+    this.cart.products.map( (product) => {
+      totalPrice += product.price * product.quantity;
+    });
+
+    return totalPrice;
+  }
+
+  cartTotal(): number {
+    return this.getPrice() + this.cart.shipping;
+  }
+
   private refreshCart() {
     this.cart = this.cartService.getCart();
   }

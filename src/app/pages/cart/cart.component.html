@@ -48,7 +48,7 @@
         
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef> Sub-total </th>
-                    <td mat-cell *matCellDef="let element" style="color: #9A9A9A; font-weight: 800;"> {{element.price | currency:'BRL'}} </td>
+                    <td mat-cell *matCellDef="let element" style="color: #9A9A9A; font-weight: 800;"> {{element.price * element.quantity | currency:'BRL'}} </td>
                 </ng-container>
         
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -69,25 +69,25 @@
             <hr class="w-75 m-auto">
 
             <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
-                <span>1 produto</span>
-                <span>{{ 0 | currency:'BRL'}}</span>
+                <span>{{ 0 }} produto</span>
+                <span>{{ getPrice() | currency:'BRL'}}</span>
             </div>
 
             <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
                 <span>Frete</span>
-                <span>{{ 0 | currency:'BRL'}}</span>
+                <span>{{ cart.shipping | currency:'BRL'}}</span>
             </div>
 
             <hr class="w-75 m-auto">
 
             <div class="font-weight text-dark w-75 font-weight-bold m-auto" style="font-size: 22px;" fxLayoutAlign="space-between">
                 <span>Total</span>
-                <span>{{0 | currency:'BRL'}}</span>
+                <span>{{ cartTotal() | currency:'BRL'}}</span>
             </div>
 
             <div class="w-75 m-auto" >
-                <span fxLayoutAlign="end">Em até 23x de {{123 | currency:'BRL'}}</span>
-                <span fxLayoutAlign="end">{{123 | currency:'BRL'}} à vista</span>
+                <span fxLayoutAlign="end">Em até 12 de {{ cartTotal()/12 | currency:'BRL'}}</span>
+                <span fxLayoutAlign="end">{{cartTotal()*0.9 | currency:'BRL'}} à vista</span>
                 <span fxLayoutAlign="end">(10% de desconto)</span>
             </div>
 
