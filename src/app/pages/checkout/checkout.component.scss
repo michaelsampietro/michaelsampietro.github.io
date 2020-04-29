@@ -10,11 +10,47 @@
         div:nth-child(2) {
             border-left: 2px solid #EBEBEB;
             border-right: 2px solid #EBEBEB;
-            
+
             span {
                 width: 100px;
             }
         }
     }
-    
+
+}
+
+::ng-deep {
+
+    mat-ink-bar {
+        display: none;
+    }
+
+    .mat-tab-header {
+        border: none;
+    }
+
+    .mat-tab-label:nth-child(1) {
+        display: none;
+    }
+
+    .mat-tab-label {
+        border-radius: 20px;
+        border: 1px solid #EBEBEB;
+        box-shadow: none;
+
+        &:hover {
+            color: #FFA31A;
+            border: 1px solid #FFA31A;
+            box-shadow: none;
+        }
+
+        &.mat-tab-label-active {
+            background-color: #2E2E2E;
+            border: 1px solid #2E2E2E;
+            color: #FFA31A;
+            opacity: 1;
+            box-shadow: none;
+        }
+    }
+
 }

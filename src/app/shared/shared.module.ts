@@ -11,6 +11,7 @@ import { PillowsComponent } from './pillows/pillows.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
+import { CartOverviewComponent } from './cart-overview/cart-overview.component';
 
 const declarationsAndExports = [
   HeaderMenuComponent,
@@ -18,7 +19,8 @@ const declarationsAndExports = [
   FooterComponent,
   PillowsComponent,
   ShippingComponent,
-  LoaderComponent
+  LoaderComponent,
+  CartOverviewComponent
 ];
 
 @NgModule({

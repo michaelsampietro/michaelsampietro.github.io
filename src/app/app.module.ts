@@ -28,6 +28,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { LoginGuard } from './guards/login.guard';
 import { CheckoutGuard } from './guards/checkout.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTabsModule } from '@angular/material/tabs';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 registerLocaleData(localePt, 'pt');

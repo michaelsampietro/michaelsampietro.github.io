@@ -1,5 +1,5 @@
 <div class="container py-5">
-    <div fxLayout="column">
+    <div fxLayout="column" fxLayoutGap="5%">
         <p class="main-text text-dark">Endereço de entrega</p>
 
         <div id="endereco" class="card rounded-20 px-4 py-2" fxLayout="row wrap" fxLayoutAlign="center center">
@@ -9,20 +9,47 @@
                 <p class="m-0">{{user.phone | mask:'(00) 0000-0000'}}</p>
             </div>
 
-            <div fxFlex="60" fxFlex.gt-sm="33" class="p-3 text-left" fxLayout="column" fxLayoutAlign.gt-sm="space-around center">
+            <div fxFlex="60" fxFlex.gt-sm="33" class="p-3 text-left" fxLayout="column"
+                fxLayoutAlign.gt-sm="space-around center">
                 <span>{{address.address}},{{address.number}}</span>
                 <span>CEP {{address.cep}}</span>
                 <span>{{address.city}} - {{address.state}}</span>
             </div>
-            
+
             <div fxFlex="40" fxFlex.gt-sm="33" class="p-3 text-center">
                 <u><a class="link" (click)="changeAddress()">Alterar dados de entrega</a></u>
             </div>
         </div>
-        <p class="main-text text-dark">Endereço de entrega</p>
 
-        <div class="card rounded-20">
-            teste
+        <p class="main-text text-dark">Meio de pagamento</p>
+
+        <div fxLayout="row wrap" fxLayoutAlign="space-between start">
+
+            <div fxFlex="100" fxFlex.gt-sm="30">
+                <app-cart-overview [showButton]="false"></app-cart-overview>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-sm="68">
+                <mat-tab-group class="w-100">
+                    <mat-tab label="Cartão de crédito">
+                        <div class="pt-3">
+                            Mensagem para selecionar alguma opção acima
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Cartão de crédito">
+                        <div class="pt-3">
+                            Cartão
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Boleto bancário">
+                        <div class="pt-3">
+                            Boleto
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
         </div>
+        
+
     </div>
 </div>

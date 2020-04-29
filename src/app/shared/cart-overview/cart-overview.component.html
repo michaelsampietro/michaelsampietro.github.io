@@ -1,0 +1,33 @@
+<div class="w-100" fxLayout="column" class="card-resumo text-center">
+
+    <p style="font-size: 22px; font-weight: 400;">Resumo do pedido</p>
+
+    <hr class="w-75 m-auto">
+
+    <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
+        <span>{{ cart.products.length }} produto</span>
+        <span>{{ getPrice() | currency:'BRL'}}</span>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between" class="w-75 m-auto">
+        <span>Frete</span>
+        <span>{{ cart.shipping | currency:'BRL'}}</span>
+    </div>
+
+    <hr class="w-75 m-auto">
+
+    <div class="font-weight text-dark w-75 font-weight-bold m-auto" style="font-size: 22px;"
+        fxLayoutAlign="space-between">
+        <span>Total</span>
+        <span>{{ cartTotal() | currency:'BRL'}}</span>
+    </div>
+
+    <div class="w-75 m-auto">
+        <span fxLayoutAlign="end">Em até 12 de {{ cartTotal()/12 | currency:'BRL' }}</span>
+        <span fxLayoutAlign="end">{{ cartTotal() * .9 | currency:'BRL' }} à vista</span>
+        <span fxLayoutAlign="end">(10% de desconto)</span>
+    </div>
+
+    <button (click)="redirect()" *ngIf="showButton" class="btn bg-highlight btn-rounded m-auto px-4">Continuar</button>
+
+</div>
