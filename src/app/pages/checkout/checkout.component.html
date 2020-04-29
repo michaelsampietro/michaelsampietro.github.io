@@ -1,11 +1,25 @@
 <div class="container py-5">
     <div fxLayout="column">
-        <p class="text-main">Endereço de entrega</p>
+        <p class="main-text text-dark">Endereço de entrega</p>
 
-        <div class="card rounded-20">
-            teste
+        <div id="endereco" class="card rounded-20 px-4 py-2" fxLayout="row wrap" fxLayoutAlign="center center">
+            <div fxFlex="100" fxFlex.gt-sm="33" class="p-3">
+                <p>{{user.name}}</p>
+                <p class="m-0">{{user.email}}</p>
+                <p class="m-0">{{user.phone | mask:'(00) 0000-0000'}}</p>
+            </div>
+
+            <div fxFlex="60" fxFlex.gt-sm="33" class="p-3 text-left" fxLayout="column" fxLayoutAlign.gt-sm="space-around center">
+                <span>{{address.address}},{{address.number}}</span>
+                <span>CEP {{address.cep}}</span>
+                <span>{{address.city}} - {{address.state}}</span>
+            </div>
+            
+            <div fxFlex="40" fxFlex.gt-sm="33" class="p-3 text-center">
+                <u><a class="link" (click)="changeAddress()">Alterar dados de entrega</a></u>
+            </div>
         </div>
-        <p class="text-main">Endereço de entrega</p>
+        <p class="main-text text-dark">Endereço de entrega</p>
 
         <div class="card rounded-20">
             teste

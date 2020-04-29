@@ -1,0 +1,20 @@
+#endereco {
+
+    @media screen and (max-width: 991px) {
+        div:nth-child(1) {
+            border-bottom: 2px solid #EBEBEB;
+        }
+    }
+
+    @media screen and (min-width: 992px) {
+        div:nth-child(2) {
+            border-left: 2px solid #EBEBEB;
+            border-right: 2px solid #EBEBEB;
+            
+            span {
+                width: 100px;
+            }
+        }
+    }
+    
+}

@@ -61,6 +61,10 @@ a {
     color: #2E2E2E;
 }
 
+.link {
+    cursor: pointer;
+}
+
 ::ng-deep {
     .mat-form-field-underline {
         display: none;

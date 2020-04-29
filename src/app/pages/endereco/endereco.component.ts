@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Addres } from 'src/models/address';
+import { EnderecoApi } from 'src/models/address';
 import { Router } from '@angular/router';
 
 @Component({
@@ -48,7 +48,7 @@ export class EnderecoComponent implements OnInit {
     if (cep.length === 8) {
       await this.httpClient.get(`https://viacep.com.br/ws/${cep}/json/`).toPromise().then((endereco: any) => {
         if (!endereco.erro) {
-          const z: Addres = endereco as Addres;
+          const z: EnderecoApi = endereco as EnderecoApi;
           this.address.patchValue(endereco.logradouro);
           this.city.patchValue(endereco.localidade);
           this.state.patchValue(endereco.uf);
