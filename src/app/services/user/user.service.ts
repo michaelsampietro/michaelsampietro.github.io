@@ -8,7 +8,7 @@ export class UserService {
 
   constructor() { }
 
-  getUser(): User {
+  getUser(): any {
     const user = JSON.parse(localStorage.getItem('user'));
     // const user = localStorage.getItem('user');
     return user;
@@ -19,7 +19,13 @@ export class UserService {
   }
 
   login(credentials: { email: string, password: string}) {
-    localStorage.setItem('user', credentials.email);
+    // Aqui deve salvar um objeto com as informações do usuario
+    localStorage.setItem('user', JSON.stringify(credentials.email));
+
+    // tambem deve coletar as informações de endereço do usuario, vindas do backend e salvar no storage
+    // Ex.:
+    // const endereco: Address = ~obter do back~
+    // localStorage.setItem('address', JSON.stringify(endereco));
   }
 
   register(user: User) {

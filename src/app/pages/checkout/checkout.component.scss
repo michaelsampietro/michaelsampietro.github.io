@@ -37,6 +37,7 @@
         border-radius: 20px;
         border: 1px solid #EBEBEB;
         box-shadow: none;
+        margin-right: 10px;
 
         &:hover {
             color: #FFA31A;
@@ -52,5 +53,16 @@
             box-shadow: none;
         }
     }
+}
 
+.card {
+    border: 1px solid #EBEBEB;
+}
+
+.custom-label {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    font-size: 12px;
+    padding-left: 15px;
 }

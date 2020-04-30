@@ -30,26 +30,71 @@
             </div>
 
             <div fxFlex="100" fxFlex.gt-sm="68">
-                <mat-tab-group class="w-100">
+                <mat-tab-group #payment (selectedTabChange)="tabChanged($event)" class="w-100">
                     <mat-tab label="Cartão de crédito">
-                        <div class="pt-3">
-                            Mensagem para selecionar alguma opção acima
+                        <div class="py-5 my-2 card rounded-20 text-center">
+                            <span style="font-size: 48px; line-height: 48px; font-weight: 100;">Selecione uma das opções
+                                acima</span>
                         </div>
                     </mat-tab>
                     <mat-tab label="Cartão de crédito">
-                        <div class="pt-3">
-                            Cartão
-                        </div>
+                        <form #cardForm [formGroup]="cardForm">
+                            <div class="py-5 px-4 my-2 card rounded-20">
+                                <mat-form-field appearance="none">
+                                    <mat-label class="label">Número do cartão</mat-label>
+                                    <input matInput type="number" [formControl]="number" required>
+                                    <mat-error *ngIf="number.touched && number.errors">Campo obrigatório.</mat-error>
+                                </mat-form-field>
+
+                                <div fxLayout="row" fxLayoutAlign="space-between start">
+                                    <div fxFlex="68">
+                                        <mat-form-field appearance="none">
+                                            <mat-label class="label">Nome impresso no cartão</mat-label>
+                                            <input matInput type="number" [formControl]="name" required>
+                                            <mat-error *ngIf="name.touched && name.errors">Campo obrigatório.</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="14" style="position: relative;">
+                                        <label class="label custom-label">Vencimento</label>
+                                        <mat-form-field appearance="none">
+                                            <input matInput type="number" [formControl]="month" required placeholder="Mês">
+                                            <mat-error *ngIf="month.touched && month.errors">Campo obrigatório.</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="14">
+
+                                        <mat-form-field appearance="none">
+                                            <input matInput type="number" [formControl]="year" placeholder="Ano" required>
+                                            <mat-error *ngIf="year.touched && year.errors">Campo obrigatório.</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                                <mat-form-field appearance="none">
+                                    <mat-label>Cód. de segurança</mat-label>
+                                    <input matInput type="number" [formControl]="security" required>
+                                    <mat-error *ngIf="security.touched && security.errors">Campo obrigatório.</mat-error>
+                                </mat-form-field>
+                            </div>
+                            
+                            <button mat-flat-button class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit">Finalizar compra</button>
+                        </form>
                     </mat-tab>
                     <mat-tab label="Boleto bancário">
-                        <div class="pt-3">
-                            Boleto
+                        <div class="py-5 my-2 card rounded-20 text-center">
+                            <div>
+                                <p class="font-weight-bold">Atenção: O pagamento através de boleto acrescentará 3 dias úteis no prazo de entrega
+                                    devido a compensação bancária.</p>
+                                <p>Após clicar em "Finalizar compra" você receberá o seu boleto bancário. É possível
+                                    imprimi-lo e pagar pelo site do seu banco ou em uma casa lotérica. Nota: O pedido
+                                    será confirmado apenas após a confirmação do pagamento</p>
+                            </div>
                         </div>
                     </mat-tab>
                 </mat-tab-group>
             </div>
         </div>
-        
+
 
     </div>
 </div>
