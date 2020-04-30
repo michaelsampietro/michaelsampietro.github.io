@@ -19,6 +19,12 @@
 
 }
 
+#payment-wrapper {
+    @media screen and (max-width: 959px) {
+        padding-top: 20px;
+    }
+}
+
 ::ng-deep {
 
     mat-ink-bar {
@@ -31,6 +37,10 @@
 
     .mat-tab-label:nth-child(1) {
         display: none;
+    }
+
+    .mat-form-field-invalid .mat-tab-label {
+        color: red;
     }
 
     .mat-tab-label {

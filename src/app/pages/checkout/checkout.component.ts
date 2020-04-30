@@ -18,7 +18,6 @@ const enum PaymentOptions {
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
-  @ViewChild('cardForm') cardFormElement;
 
   address: Address;
   user: User;
@@ -40,6 +39,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.user = this.userService.getUser();
     this.getAddress();
   }
@@ -59,14 +59,15 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
-  finish(option: number) {
+  card(cardInfo: any) {
+    console.log('Cartão: ', cardInfo);
+    // Tratar os dados do cartão aqui
+  }
+
+  boleto(option: number) {
     if (option === PaymentOptions.Boleto) {
       // gerar boleto aqui
-    } else if (option === PaymentOptions.Cartao) {
-      console.log(this.cardFormElement);
-      this.cardFormElement.nativeElement.submit();
-    } else {
-      alert('Nenhuma opção de pagamento identificada.');
+      console.log('boleto');
     }
   }
 
