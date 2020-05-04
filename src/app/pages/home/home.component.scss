@@ -116,17 +116,43 @@ $font-color: #9A9A9A;
     ;
 }
 
-::ng-deep .carousel-item {
-    display: block !important;
-    position: absolute;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: all .4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-}
+::ng-deep {
 
-::ng-deep .carousel-item.active {
-    position: relative;
-    transform: translateX(0);
-    opacity: 1;
-    top: 0;
+    .carousel-item {
+        display: block !important;
+        position: absolute;
+        transform: translateX(100%);
+        opacity: 0;
+        transition: all .4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+        @media screen and (max-width: 991px) {
+            padding: 0 10px;
+        }
+    }
+
+    .carousel-item.active {
+        position: relative;
+        transform: translateX(0);
+        opacity: 1;
+        top: 0;
+    }
+
+    .carousel-control-next {
+        @media screen and (min-width: 992px) {
+            right: -150px !important;
+        }
+    }
+
+    .carousel-control-prev {
+        @media screen and (min-width: 992px) {
+            left: -150px !important;
+        }
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        @media screen and (max-width: 991px) {
+            display: none;
+        }
+    }
 }

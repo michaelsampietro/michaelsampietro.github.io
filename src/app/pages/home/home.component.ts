@@ -18,19 +18,19 @@ export class HomeComponent implements OnInit {
 
     this.images = [
       {
-        image: `../assets/images/pillows/regular/big-preto@2x.png`,
+        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-preto@2x.png`,
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Carbon Active'
       },
       {
-        image: `../assets/images/pillows/regular/big-lavanda@2x.png`,
+        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-lavanda@2x.png`,
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; French Lavanda'
       },
       {
-        image: `../assets/images/pillows/regular/big-branco@2x.png`,
+        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-branco@2x.png`,
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Pure'
       },
       {
-        image: `../assets/images/pillows/regular/big-verde@2x.png`,
+        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-verde@2x.png`,
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Aloe Vera'
       },
     ];
