@@ -47,7 +47,7 @@ export class CartService {
       title: 'Tem certeza?',
       message: 'Essa ação não pode ser desfeita.',
       type: AlertTypes.warning,
-      showButtons: false
+      showButtons: true
     });
 
     dialog.afterClosed().toPromise().then(close => {
