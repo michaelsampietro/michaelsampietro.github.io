@@ -38,8 +38,8 @@ export class CartComponent implements OnInit {
     this.refreshCart();
   }
 
-  delete(product: Product) {
-    this.cartService.remove(product);
+  async delete(product: Product) {
+    await this.cartService.remove(product);
     this.refreshCart();
   }
 

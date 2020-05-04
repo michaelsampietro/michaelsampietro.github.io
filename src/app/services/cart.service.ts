@@ -26,7 +26,7 @@ export class CartService {
         duration: 2000,
         horizontalPosition: 'left',
         verticalPosition: 'bottom',
-        panelClass: ['bg-success', 'font-weight-bold']
+        panelClass: ['bg-success', 'text-white', 'font-weight-bold']
       });
     } else if (update) {
       const index = this.cart.products.findIndex(f => f.id === product.id);
@@ -42,7 +42,7 @@ export class CartService {
     }
   }
 
-  remove(product: Product) {
+  async remove(product: Product) {
     const dialog = this.alertService.show({
       title: 'Tem certeza?',
       message: 'Essa ação não pode ser desfeita.',
@@ -50,7 +50,7 @@ export class CartService {
       showButtons: true
     });
 
-    dialog.afterClosed().toPromise().then(close => {
+    await dialog.afterClosed().toPromise().then(close => {
       if (close) {
         const index = this.cart.products.findIndex(f => f.id === product.id);
         this.cart.products.splice(index);
