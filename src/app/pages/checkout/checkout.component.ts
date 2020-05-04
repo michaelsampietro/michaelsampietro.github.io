@@ -5,6 +5,8 @@ import { User } from 'src/models/user';
 import { Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { AlertTypes } from 'src/app/services/alert/alert-types.enum';
 
 const enum PaymentOptions {
   Nenhum = 0,
@@ -26,6 +28,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private alertService: AlertService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {
@@ -39,7 +42,6 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.user = this.userService.getUser();
     this.getAddress();
   }
@@ -62,12 +64,38 @@ export class CheckoutComponent implements OnInit {
   card(cardInfo: any) {
     console.log('Cartão: ', cardInfo);
     // Tratar os dados do cartão aqui
+
+    // Se der sucesso, chamar o alert service com mensagem de sucesso
+    const dialog = this.alertService.show({
+      title: 'Obrigado pela compra',
+      message: 'Sua compra efetuada com sucesso. Aguarde nosso contato por email para maiores informações.',
+      type: AlertTypes.success,
+      showButtons: false
+    });
+
+    dialog.afterClosed().toPromise().then(e => {
+      this.router.navigate(['/']);
+    })
+
+    // Caso contrario, chamar o alert service com mensagem de erro
   }
 
   boleto(option: number) {
     if (option === PaymentOptions.Boleto) {
       // gerar boleto aqui
       console.log('boleto');
+
+      // Mensagem de confirmação
+      const dialog = this.alertService.show({
+        title: 'Obrigado pela compra',
+        message: 'O boleto foi enviado para o seu email. Lembre-se que após o pagamento, a confirmação pode demorar até 2 dias úteis.',
+        type: AlertTypes.success,
+        showButtons: false
+      });
+
+      dialog.afterClosed().toPromise().then(e => {
+        this.router.navigate(['/']);
+      });
     }
   }
 

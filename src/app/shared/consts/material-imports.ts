@@ -12,6 +12,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const MaterialImports = [
   MatToolbarModule,
@@ -27,5 +28,6 @@ export const MaterialImports = [
   MatRadioModule,
   MatDialogModule,
   MatProgressSpinnerModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSnackBarModule
 ];

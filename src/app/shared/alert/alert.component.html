@@ -1,0 +1,11 @@
+<div class="py-2 px-2">
+    <h2 [class]="titleCss">{{alertData.title}}</h2>
+    <p>{{alertData.message}}</p>
+
+    <div mat-dialog-actions *ngIf="alertData.showButtons">
+        <button mat-button [mat-dialog-close]="false" cdkFocusInitial>Cancelar</button>
+        <button mat-button [mat-dialog-close]="true">Confirmar</button>
+    </div>
+</div>
+
+

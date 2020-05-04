@@ -12,6 +12,7 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './loader/loader.component';
 import { CartOverviewComponent } from './cart-overview/cart-overview.component';
+import { AlertComponent } from './alert/alert.component';
 
 const declarationsAndExports = [
   HeaderMenuComponent,
@@ -24,7 +25,7 @@ const declarationsAndExports = [
 ];
 
 @NgModule({
-  declarations: [declarationsAndExports],
+  declarations: [declarationsAndExports, AlertComponent],
   exports: [declarationsAndExports],
   imports: [
     CommonModule,

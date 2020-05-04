@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/models/product';
 import { Cart } from 'src/models/cart';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertService } from './alert/alert.service';
+import { AlertTypes } from './alert/alert-types.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,8 @@ import { Cart } from 'src/models/cart';
 export class CartService {
 
   cart: Cart = null;
-  constructor() {
+  constructor(private alertService: AlertService,
+              private snackBar: MatSnackBar) {
     this.cart = this.getCart();
   }
 
@@ -18,19 +22,41 @@ export class CartService {
     if (!productIsOnCart) {
       this.cart.products.push(product);
       this.updateCartOnStorage(this.cart);
+      this.snackBar.open('Sucesso! O produto foi adicionado ao carrinho.', '', {
+        duration: 2000,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom',
+        panelClass: ['bg-success', 'font-weight-bold']
+      });
     } else if (update) {
       const index = this.cart.products.findIndex(f => f.id === product.id);
       this.cart.products[index].quantity = quantity;
       this.updateCartOnStorage(this.cart);
-    } else if (!update) {
-      alert('Esse produto já está adicionado ao carrinho!');
+    } else {
+      this.snackBar.open('O produto já está no carrinho.', '', {
+        duration: 2000,
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom',
+        panelClass: ['bg-warning', 'text-dark', 'font-weight-bold']
+      });
     }
   }
 
   remove(product: Product) {
-    const index = this.cart.products.findIndex(f => f.id === product.id);
-    this.cart.products.splice(index);
-    this.updateCartOnStorage(this.cart);
+    const dialog = this.alertService.show({
+      title: 'Tem certeza?',
+      message: 'Essa ação não pode ser desfeita.',
+      type: AlertTypes.warning,
+      showButtons: false
+    });
+
+    dialog.afterClosed().toPromise().then(close => {
+      if (close) {
+        const index = this.cart.products.findIndex(f => f.id === product.id);
+        this.cart.products.splice(index);
+        this.updateCartOnStorage(this.cart);
+      }
+    });
   }
 
   // Como não tenho backend, estou fazendo um controle apenas usando o localstorage.
