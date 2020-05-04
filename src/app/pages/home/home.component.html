@@ -9,14 +9,25 @@
             <app-header-menu></app-header-menu>
         </div>
 
-        <div class="py-5 my-5" id="carousel-wrapper" fxLayout="column">
-            <ngb-carousel *ngIf="images" [showNavigationIndicators]="false" [interval]="0">
-                <ng-template class="w-100" ngbSlide *ngFor="let image of images">
+        <div class="py-5 my-5" id="carousel-wrapper" fxLayout="column" fxLayoutGap="5%">
+            <ngb-carousel #carousel *ngIf="images" [showNavigationIndicators]="false" [interval]="0">
+                <ng-template class="w-100" ngbSlide [id]="'slide_'+i" *ngFor="let image of images; let i = index;">
                     <div fxLayoutAlign="center center" class=" text-center m-auto">
-                        <img class="w-100" [src]="image" alt="Random first slide">
+                        <img class="w-100" [src]="image.image" [alt]="image.name">
+                    </div>
+
+                    <div class="caption">
+                        <p [innerHTML]="image.name"></p>
                     </div>
                 </ng-template>
             </ngb-carousel>
+
+
+            <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="5%" class="px-5">
+                <div class="thumbnail" fxLayoutAlign="center center" (click)="slideTo(i)" *ngFor="let image of images; let i = index;">
+                    <img class="w-100" [src]="image.image" [alt]="image.name">
+                </div>
+            </div>
         </div>
 
         <p class="text-uppercase" fxLayoutAlign="start sc" style="font-weight: 200;">

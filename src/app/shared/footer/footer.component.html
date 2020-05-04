@@ -2,11 +2,11 @@
     <div id="footer">
         <div class="container" fxLayout="column" fxLayoutAlign="start start">
             <div id="footer-menu" fxLayout="row wrap" fxFlexFill fxLayoutAlign="center center" class="py-2">
-                <a class="footer-item" href="">Home</a>
-                <a class="footer-item" href="">Produtos</a>
-                <a class="footer-item" href="">Loja</a>
-                <a class="footer-item" href="">FAQ</a>
-                <a class="footer-item" href="">Contato</a>
+                <a class="footer-item" [routerLink]="['/']">Home</a>
+                <a class="footer-item" [routerLink]="['/produtos']">Produtos</a>
+                <a class="footer-item" [routerLink]="['/produtos']">Loja</a>
+                <a class="footer-item" [routerLink]="['/faq']">FAQ</a>
+                <a class="footer-item" [routerLink]="['/contato']">Contato</a>
             </div>
             <div class="pb-3 pt-2" fxFlexFill fxLayout="row wrap" fxLayoutAlign="space-between center">
                 <div id="payment-methods" fxFlex="100" fxFlex.gt-sm="70" fxLayoutAlign="start center">

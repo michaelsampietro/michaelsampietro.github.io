@@ -10,14 +10,34 @@ $font-color: #9A9A9A;
     }
 
     #carousel-wrapper {
-        
+
         .caption {
             text-align: right;
             float: right;
+            padding: 20px;
+            font-size: 20px;
+            line-height: 22px;
 
             p {
                 margin: 0;
                 padding: 0;
+            }
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 55px;
+            background-color: #282828;
+            border-radius: 5px;
+            transition: all .2s;
+
+            img {
+                transform: scale(1.2);
+            }
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.05);
             }
         }
     }
@@ -26,13 +46,13 @@ $font-color: #9A9A9A;
 .main-text {
 
     font-size: 28px;
-    
+
     @media screen and (min-width: 768px) {
         font-size: 32px;
     }
 
     @media screen and (min-width: 992px) {
-        font-size: 44px;        
+        font-size: 44px;
     }
 
     font-weight: 300;
@@ -73,13 +93,13 @@ $font-color: #9A9A9A;
         max-width: 170px;
         height: auto;
         position: absolute;
-        top:-70px;
+        top: -70px;
         left: -10px;
 
         @media screen and (min-width: 600px) {
             max-width: 200px;
-            top:-100px;
-            left: -50px;    
+            top: -100px;
+            left: -50px;
         }
     }
 
@@ -91,5 +111,22 @@ $font-color: #9A9A9A;
         @media screen and (min-width: 1024px) {
             width: 75%;
         }
-    };
+    }
+
+    ;
+}
+
+::ng-deep .carousel-item {
+    display: block !important;
+    position: absolute;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all .4s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+::ng-deep .carousel-item.active {
+    position: relative;
+    transform: translateX(0);
+    opacity: 1;
+    top: 0;
 }

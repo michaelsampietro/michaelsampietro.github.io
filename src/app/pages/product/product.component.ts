@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductPage, carbon } from 'src/models/product-page';
+import { ProductPage } from 'src/models/product-page';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/models/product';
+import { carbon } from 'src/models/carbon';
 
 @Component({
   selector: 'app-product',
@@ -26,6 +27,12 @@ export class ProductComponent implements OnInit {
     this.route.params.subscribe(param => {
       console.log(param.model);
       if (param.model === 'carbon' || !param.model) {
+        this.selectedProduct = carbon;
+      } else if (param.model === 'pure' || !param.model) {
+        this.selectedProduct = carbon;
+      } else if (param.model === 'aloe-vera' || !param.model) {
+        this.selectedProduct = carbon;
+      } else if (param.model === 'lavanda' || !param.model) {
         this.selectedProduct = carbon;
       }
     });
