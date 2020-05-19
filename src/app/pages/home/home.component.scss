@@ -155,3 +155,35 @@ $font-color: #9A9A9A;
         }
     }
 }
+
+
+#carouselCommentsWrapper {
+    @media screen and (min-width: 1024px) {
+        width: 70%;
+    }
+}
+
+::ng-deep #carouselComments {
+
+    .carousel-indicators {
+        align-items: center !important;
+        align-self: center !important;
+
+        li {
+            width: 7px !important;
+            height: 7px !important;
+            background-color: #1B1B1B;
+            border: 2px solid #B59867;
+            border-radius: 50%;
+            transition: all .1s;
+
+            &.active {
+                width: 15px !important;
+                height: 15px !important;
+                background-color: #B59867 !important;
+                border: none !important;
+            }
+        }
+    }
+
+}

@@ -122,3 +122,50 @@
         </p>
     </div>
 </div>
+
+<div class="bg-dark">
+    <div class="container" id="carouselCommentsWrapper">
+        <ngb-carousel id="carouselComments" class="py-5" #carouselComments [interval]="0" [showNavigationArrows]="true" [showNavigationIndicators]="true">
+            <ng-template class="w-100 h-100" ngbSlide>
+                <div fxLayout="column" fxLayoutAlign="center center" style="color: #B59867">
+                    <div class="w-100 text-center">
+                        <img class="m-auto" style="border-radius: 50%; width: 80px; height: 80px;" src="https://placeimg.com/640/480/people" alt="">
+                    </div>
+                    <h3 class="font-weight-bold">@Bruce Dikinson</h3>
+                    <p class="text-center" style="font-weight: 300;">
+                        <span class="font-weight-bold">"</span>
+                        Este travesseiro realmente melhorou a qualidade do meu sono. Agora quando eu deito, acordo na mesma posição. Eu costumava me virar a noite, amassando meu travesseiro até achar uma posição confortável. Não é mais assim. Este é um travesseiro que mantém meu pescoço alinhado, tenho dormido muito bem todas as noites.
+                        <span class="font-weight-bold">"</span>
+                    </p>
+                </div>
+            </ng-template>
+            <ng-template class="w-100" ngbSlide>
+                <div fxLayout="column" fxLayoutAlign="center center" style="color: #B59867">
+                    <div class="w-100 text-center">
+                        <img class="m-auto" style="border-radius: 50%; width: 80px; height: 80px;" src="https://placeimg.com/640/480/people" alt="">
+                    </div>
+                    <h3 class="font-weight-bold">@Bruce Dikinson</h3>
+                    <p>
+                        <span class="font-weight-bold">"</span>
+                        Depoimento 2
+                        <span class="font-weight-bold">"</span>
+                    </p>
+                </div>
+            </ng-template>
+            <ng-template class="w-100" ngbSlide>
+                <div fxLayout="column" fxLayoutAlign="center center" style="color: #B59867">
+                    <div class="w-100 text-center">
+                        <img class="m-auto" style="border-radius: 50%; width: 80px; height: 80px;" src="https://placeimg.com/640/480/people" alt="">
+                    </div>
+                    <h3 class="font-weight-bold">@Bruce Dikinson</h3>
+                    <p>
+                        <span class="font-weight-bold">"</span>
+                        Depoimento 3
+                        <span class="font-weight-bold">"</span>
+                    </p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+    </div>
+</div>
