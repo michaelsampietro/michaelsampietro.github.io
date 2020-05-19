@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('carousel') carousel: any;
 
@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   buyPillows = [];
 
   ngOnInit(): void {
-
     this.images = [
       {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-preto@2x.png`,
@@ -26,18 +25,34 @@ export class HomeComponent implements OnInit {
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; French Lavanda'
       },
       {
-        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-branco@2x.png`,
-        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Pure'
-      },
-      {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-verde@2x.png`,
         name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Aloe Vera'
       },
+      {
+        image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-branco@2x.png`,
+        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Pure'
+      }
     ];
+  }
 
+  ngAfterViewInit(): void {
+    document.getElementById('thumbnail_0').classList.add('d-none');
   }
 
   slideTo(id: number) {
     this.carousel.select('slide_' + id);
+    const elements = document.getElementsByClassName('thumbnail');
+
+    Array.from(elements).forEach((el) => {
+      if (!el.classList.contains('d-flex')) {
+        el.classList.add('d-flex');
+      }
+      if (el.classList.contains('d-none')) {
+        document.getElementById('thumbnail_' + id).classList.remove('d-none');
+      }
+    });
+
+    document.getElementById('thumbnail_' + id).classList.remove('d-flex');
+    document.getElementById('thumbnail_' + id).classList.add('d-none');
   }
 }

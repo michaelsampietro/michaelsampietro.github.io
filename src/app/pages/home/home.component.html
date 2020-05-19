@@ -9,9 +9,15 @@
             <app-header-menu></app-header-menu>
         </div>
 
-        <div class="py-5 my-5" id="carousel-wrapper" fxLayout="column" fxLayoutGap="5%">
+        <p class="pt-3 d-flex d-md-none text-center m-auto main-text font-weight-bold">A evolução do Bem-Estar</p>
+
+        <div class="py-md-5 my-5" id="carousel-wrapper" fxLayout="column" fxLayoutGap="5%">
             <ngb-carousel #carousel *ngIf="images" [showNavigationIndicators]="false" [interval]="0">
                 <ng-template class="w-100" ngbSlide [id]="'slide_'+i" *ngFor="let image of images; let i = index;">
+                    <div class="d-none d-md-block" style="position: absolute; bottom: 0; left:0">
+                        <p class="main-text font-weight-bold">A evolução <br> do Bem-Estar</p>
+                    </div>
+
                     <div fxLayoutAlign="center center" class=" text-center m-auto">
                         <img class="w-100" [src]="image.image" [alt]="image.name">
                     </div>
@@ -22,10 +28,17 @@
                 </ng-template>
             </ngb-carousel>
 
-
-            <div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap="5%" class="px-5">
-                <div class="thumbnail" fxLayoutAlign="center center" (click)="slideTo(i)" *ngFor="let image of images; let i = index;">
-                    <img class="w-100" [src]="image.image" [alt]="image.name">
+            <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between end">
+                <div class="d-none d-md-flex">
+                    <a [routerLink]="['/faq']" class="btn bg-highlight btn-rounded">Saiba mais</a>
+                </div>
+                <div fxLayoutAlign="end" class="m-auto m-md-0">
+                    <div [id]="'thumbnail_' + i" class="thumbnail mx-2" fxLayoutAlign="end center" (click)="slideTo(i)" *ngFor="let image of images; let i = index;">
+                        <img style="clip-path: polygon(8% 0, 100% 0, 100% 100%, 8% 100%);" class="w-100" [src]="image.image" [alt]="image.name">
+                    </div>
+                </div>
+                <div class="d-flex d-md-none mt-3" fxFlex="100" fxLayoutAlign="center">
+                    <a [routerLink]="['/faq']" class="btn bg-highlight btn-rounded">Saiba mais</a>
                 </div>
             </div>
         </div>
@@ -34,17 +47,19 @@
             <mat-icon>expand_more</mat-icon> conheça os benefícios
         </p>
 
-        <div class="container py-5" fxLayout="row wrap" fxLayoutAlign="center start" fxLayoutGap="2%">
+        <div class="container py-5" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="2%">
 
             <div fxFlex="80" fxFlex.gt-xs="40">
                 <img class="w-100" src="https://zen-sleep.s3.amazonaws.com/images/home/sono-ruim-rounded6@2x.png" alt="Noite de sono ruim">
             </div>
 
-            <div fxFlex="100" fxFlex.gt-xs="58" fxLayout="column" fxLayoutAlign="start start">
-                <p class="main-text">Você já acordou com dores no corpo, se sentindo cansado ou sem energia?</p>
-                <p class="paragraph" style="font-weight: 300;">Ou tem dificuldades para dormir a noite? <br>Saiba que
+            <div fxFlex="100" fxFlex.gt-xs="58" fxLayout="column" fxLayoutAlign="start center" class="px-4">
+                <p class="main-text" style="font-size: 32px;">
+                    A última geração de travesseiros Zen Sleep, desenvolvida com a exclusiva espuma Dymamic Cell&trade;
+                </p>
+                <p class="paragraph" style="font-weight: 300; font-size: 16px;">Ou tem dificuldades para dormir a noite? <br>Saiba que
                     você não está sozinho.
-                    De acordo com uma pesquisa recente* cerca de 72% da população brasileira diz ter algum tipo de
+                    De acordo com uma <a href="www.google.com" target="blank">pesquisa recente</a>, cerca de 72% da população brasileira diz ter algum tipo de
                     dificuldade ou distúrbio que lhes impedem de ter um boa noite de sono, impactando diretamente no
                     bem-estar e na qualidade de vida.</p>
             </div>
