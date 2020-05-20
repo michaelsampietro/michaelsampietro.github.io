@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductPage } from 'src/models/product-page';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/models/product';
-import { carbon } from 'src/models/carbon';
+import { carbon } from 'src/models/pillows/carbon';
+import { aloeVera } from 'src/models/pillows/aloe-vera';
+import { pure } from 'src/models/pillows/pure';
+import { lavanda } from 'src/models/pillows/lavanda';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, AfterViewInit {
 
   images: string[] = [];
   currentImage = '';
@@ -28,12 +31,12 @@ export class ProductComponent implements OnInit {
       console.log(param.model);
       if (param.model === 'carbon' || !param.model) {
         this.selectedProduct = carbon;
-      } else if (param.model === 'pure' || !param.model) {
-        this.selectedProduct = carbon;
-      } else if (param.model === 'aloe-vera' || !param.model) {
-        this.selectedProduct = carbon;
-      } else if (param.model === 'lavanda' || !param.model) {
-        this.selectedProduct = carbon;
+      } else if (param.model === 'pure') {
+        this.selectedProduct = pure;
+      } else if (param.model === 'aloe-vera') {
+        this.selectedProduct = aloeVera;
+      } else if (param.model === 'lavanda') {
+        this.selectedProduct = lavanda;
       }
     });
 
@@ -48,10 +51,22 @@ export class ProductComponent implements OnInit {
     this.mobileCheck(true);
   }
 
-  changeImage(image: string) {
+  ngAfterViewInit(): void {
+    const thumbnails = document.getElementsByClassName('thumbnail')[0].classList.add('active');
+  }
+
+  changeImage(image: string, ev: any) {
     if (image === this.currentImage) {
       return;
     }
+
+    const thumbnails = document.getElementsByClassName('thumbnail');
+    Array.from(thumbnails).forEach(thumbnail => {
+      thumbnail.classList.remove('active');
+    });
+
+    ev.explicitOriginalTarget.offsetParent.classList.add('active');
+
 
     const imageEl = document.getElementById('image');
     imageEl.classList.toggle('animate');

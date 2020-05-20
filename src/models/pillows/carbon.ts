@@ -1,4 +1,4 @@
-import { ProductPage } from './product-page';
+import { ProductPage } from '../product-page';
 
 export const carbon: ProductPage = {
   productId: 1,
@@ -50,5 +50,6 @@ export const carbon: ProductPage = {
   capa: {
     title: 'Capa Tecido 100% Algodão Natural',
     image: 'https://zen-sleep.s3.amazonaws.com/images/product/carbon/capa-carbon-1@2x.png',
+    backgroundColor: '#474545'
   },
 };

@@ -1,19 +1,22 @@
 <div class="pt-5" fxLayout="column">
     <div fxLayout="row wrap" class="container">
-        <div id="gallery" fxFlex="100" fxFlex.gt-sm="70">
+        <div id="gallery" fxLayout="column" fxFlex="100" fxFlex.gt-sm="60">
 
-            <div style="height: 250px;">
-                <img id="image" [src]="currentImage" alt="">
+            <div fxLayoutAlign="space-around center" style="height: 300px;">
+                <img style="max-width:100%; max-height:100%;" id="image" [src]="currentImage" alt="">
             </div>
 
-            <div fxLayout="row" fxLayoutGap="2%">
-                <div class="card no-borders rounded-20 bg-light px-2 py-2 thumbnail" (click)="changeImage(image.image)"
-                    *ngFor="let image of selectedProduct.images">
-                    <div fxFlex="20%" fxLayoutAlign="start stretch" [ngStyle]="{
+            <div fxLayout="row" fxLayoutGap="2%" class="p-3">
+                <div class="card no-borders rounded-20 bg-light px-2 py-2 thumbnail"
+                    (click)="changeImage(image.image, $event)"
+                    *ngFor="let image of selectedProduct.images; let i = index;">
+                    <div class="thumbnail" fxFlex="20%" fxLayoutAlign="start stretch" [ngStyle]="{
                             'background-image': 'url(' + image.thumbnail + ')',
                             'background-size': 'contain',
                             'background-position': 'center',
                             'background-repeat': 'no-repeat',
+                            'max-height': '70px',
+                            'max-width': '70px',
                             'min-height': '50px',
                             'min-width': '50px'
                         }">
@@ -40,14 +43,17 @@
                 <span>{{selectedProduct.price * .9 | currency:'BRL'}} à vista (10% de desconto)</span>
             </div>
 
-            <button (click)="addToCart(selectedProduct)" class="btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
+            <div class="text-left py-3">
+                <button (click)="addToCart(selectedProduct)" class="m-auto btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
+            </div>
         </div>
     </div>
 
-    <div class="bg-dark" style="height: 300px;" fxLayoutAlign="start center">
+    <div id="dynamicCell" style="height: 300px;" fxLayoutAlign="start center" [ngStyle]="{'background-image': 'url('+selectedProduct.dynamicCellBackground+')'}">
         <div class="container">
-            <p class="product-name w-50">Exclusiva Espuma de ùltima Geração Dynamic Cell &trade;</p>
+            <p class="product-name">Exclusiva Espuma <br> de ùltima Geração <br> Dynamic Cell &trade;</p>
         </div>
+        <div id="overlay"></div>
     </div>
 
     <div class="container py-5" fxLayout="column" fxLayoutGap="2%">
@@ -66,23 +72,16 @@
         </div>
     </div>
 
-    <div class="capa-section container py-3 px-5 no-borders rounded-20" fxLayout="row wrap"
-        fxLayoutAlign="center center" fxLayoutGap="2%">
+    <div class="container py-3 px-5 no-borders rounded-20" fxLayout="row wrap"
+        fxLayoutAlign="center center" fxLayoutGap="2%" style="color: #FFFFFF" [ngStyle]="{'background-color': selectedProduct.capa.backgroundColor}">
         <div fxFlex="100" fxFlex.gt-sm="40">
             <img width="100%" [src]="selectedProduct.capa.image" alt="">
         </div>
-        <p fxFlex.gt-sm="30" class="main-text" style="float:left !important ;text-align: left !important;"
+        <p fxFlex.gt-sm="30" class="main-text" style="float:right !important ;text-align: right !important;"
             [innerHTML]="selectedProduct.capa.title"></p>
     </div>
 
-    <div class="container py-5" fxFlex="row" fxLayoutAlign="space-between center">
-        <img src="https://zen-sleep.s3.amazonaws.com/images/product/selo_flex.png" alt="Travesseiro eco friendly">
-        <img src="https://zen-sleep.s3.amazonaws.com/images/product/selo_flex.png" alt="Travesseiro eco friendly">
-        <img src="https://zen-sleep.s3.amazonaws.com/images/product/selo_flex.png" alt="Travesseiro eco friendly">
-    </div>
-
-
-    <div style="background-color: #2E2E2E;" class="py-5">
+    <div style="background-color: #fcfafa;" class="py-5 mt-4">
         <div class="container" fxLayout="row wrap" fxLayoutAlign="space-between center">
             <div fxLayout="column" fxLayoutGap="5%" fxFlex="100" fxFlex.gt-sm="40" class="py-2">
                 <div>
@@ -91,43 +90,53 @@
                 <div>
                     <img class="w-100" src="https://zen-sleep.s3.amazonaws.com/images/product/wire-top@2x.png" alt="">
                 </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5%">
+                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/atoxico.png" alt="Travesseiro atóxico e produzido no Brasil">
+                    <p>
+                        Com a última tecnologia gás HFO que não agride a Camada de Ozônio e o Meio Ambiente
+                    </p>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5%">
+                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/lavavel.png" alt="Travesseiro lavável">
+                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/eco.png" alt="Travesseiro Eco Flexx">
+                </div>
             </div>
-            <div fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" class="py-2">
+            <div style="font-size: 14px !important;" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" class="py-2">
                 <p class="main-text">Detalhes</p>
-                <p>
+                <p class="description-text">
                     A exclusiva espuma de Última Geração Dynamic Cell ™ oferece uma sensação única de conforto, maciez e
                     suporte para uma noite de sono relaxante e um despertar revigorante.</p>
 
-                <p>
+                <p class="description-text">
                     Seu design ergonômico e único oferece o suporte adequado para a cabeça e o pescoço, proporcionando
                     alívio nos pontos de tensão da cabeça, além de garantir um fluxo contínuo de ar, mantendo a
                     temperatura do travesseiro sempre regulada para uma noite de sono mais confortável e agradável.
                 </p>
 
-                <p>
+                <p class="description-text">
                     A inovadora tecnologia de infusão com carvão ativado orgânico, conhecido pela característica de
                     reter impurezas em seus poros, inibi a formação de ácaros e bactérias fazendo deste um travesseiro
                     naturalmente antialérgico e indicado para pessoas com alergias.
                 </p>
 
-                <p>
+                <p class="description-text">
                     Além disso, o carvão ativado orgânico possui diversos benefícios, como auxiliar na remoção de
                     odores, na absorção do excesso de umidade corporal e atuando na manutenção da temperatura do
                     travesseiro enquanto você dorme, para proporcionar uma noite de sono perfeita.
                 </p>
 
-                <p>
+                <p class="description-text">
                     O travesseiro Zen Sleep é produzido no Brasil, utilizando matérias primas de alta qualidade, e a
                     última tecnologia de gás HFO FLEXX ECO que não agride e protege o meio ambiente e a camada de
                     ozônio.
                 </p>
 
-                <p>
+                <p class="description-text">
                     Os travesseiros Zen podem ser lavados e acompanham uma capa protetora, produzida em tecido de
                     Algodão 100% Natural.
                 </p>
 
-                <p>
+                <p class="description-text">
                     Este travesseiro é indicado para todos os tipos de posições e preferencias de dormir.
                 </p>
 

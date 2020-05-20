@@ -1,6 +1,6 @@
-import { ProductPage } from './product-page';
+import { ProductPage } from '../product-page';
 
-export const carbon: ProductPage = {
+export const pure: ProductPage = {
   productId: 1,
   name: 'Zen Sleep Dynamic Cell&trade; Carbon Active',
   price: 120.3,

@@ -30,7 +30,7 @@
 
             <div fxLayout="row wrap" class="w-100" fxLayoutAlign="space-between end">
                 <div class="d-none d-md-flex">
-                    <a [routerLink]="['/faq']" class="btn bg-highlight btn-rounded">Saiba mais</a>
+                    <a [routerLink]="[saibaMaisLink]" class="btn bg-highlight btn-rounded" style="height: 35px; line-height: 33px;" >Saiba mais</a>
                 </div>
                 <div fxLayoutAlign="end" class="m-auto m-md-0">
                     <div [id]="'thumbnail_' + i" class="thumbnail mx-2" fxLayoutAlign="end center" (click)="slideTo(i)" *ngFor="let image of images; let i = index;">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="d-flex d-md-none mt-3" fxFlex="100" fxLayoutAlign="center">
-                    <a [routerLink]="['/faq']" class="btn bg-highlight btn-rounded">Saiba mais</a>
+                    <a [routerLink]="[saibaMaisLink]" class="btn bg-highlight btn-rounded" style="height: 35px; line-height: 33px;" >Saiba mais</a>
                 </div>
             </div>
         </div>

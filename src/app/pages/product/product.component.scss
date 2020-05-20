@@ -19,6 +19,8 @@
     font-weight: 800;
     font-size: 32px;
     line-height: 32px;
+    position: relative;
+    z-index: 1;
 }
 
 .product-info {
@@ -27,9 +29,27 @@
     }
 }
 
+.active {
+    margin-top: -5px;
+    box-shadow: 0px 9px 5px 0px #0000001C;
+}
 
+#dynamicCell {
+    position: relative;
+    background-color: black;
+    background-size: cover;
+    color: #F5F5F5;
 
+    #overlay {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+}
 
-.capa-section {
-    background-color: #474545;
+.description-text {
+    font-size: 16px;
 }

@@ -5,13 +5,12 @@
         </p>
 
         <div class="buy-section" fxLayout="row wrap" fxLayoutAlign="space-around center">
-            <div *ngFor="let pillow of buyPillows" fxFlex="35" class="card no-borders rounded-20 mt-5 py-4 text-center" fxLayout="column"
+            <a *ngFor="let pillow of buyPillows" [routerLink]="pillow.href" fxFlex="35" class="card no-borders rounded-20 mt-5 py-4 text-center" fxLayout="column"
                 fxLayoutAlign="center center">
                 <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
                 <p class="px-3">Travesseiro Zen Sleep <br> Dynamic Cell&trade; {{pillow.name}}</p>
-                <a [routerLink]="pillow.href" class="btn bg-highlight btn-rounded">Comprar</a>
-                <a [routerLink]="['/faq']" class="text-underline mt-3">Saiba mais</a>
-            </div>
+                <a [routerLink]="pillow.href" class="btn bg-highlight btn-rounded">Saiba mais</a>
+            </a>
         </div>
     </div>
 </div>

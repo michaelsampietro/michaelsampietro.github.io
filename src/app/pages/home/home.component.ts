@@ -13,24 +13,29 @@ export class HomeComponent implements OnInit, AfterViewInit {
   readonly pillowTypes = ['preto', 'lavanda', 'branco', 'verde'];
   images: any[] = [];
   buyPillows = [];
+  saibaMaisLink = '/produtos/carbon';
 
   ngOnInit(): void {
     this.images = [
       {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-preto@2x.png`,
-        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Carbon Active'
+        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Carbon Active',
+        saibaMaisLink: '/produtos/carbon'
       },
       {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-lavanda@2x.png`,
-        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; French Lavanda'
+        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; French Lavanda',
+        saibaMaisLink: '/produtos/lavanda'
       },
       {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-verde@2x.png`,
-        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Aloe Vera'
+        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Aloe Vera',
+        saibaMaisLink: '/produtos/aloe-vera'
       },
       {
         image: `https://zen-sleep.s3.amazonaws.com/images/pillows/regular/big-branco@2x.png`,
-        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Pure'
+        name: 'Travesseiro Zen Sleep<br/>Dynamic Cell&trade; Pure',
+        saibaMaisLink: '/produtos/pure'
       }
     ];
   }

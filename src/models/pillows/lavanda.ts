@@ -1,8 +1,8 @@
-import { ProductPage } from './product-page';
+import { ProductPage } from '../product-page';
 
-export const carbon: ProductPage = {
-  productId: 1,
-  name: 'Zen Sleep Dynamic Cell&trade; Carbon Active',
+export const lavanda: ProductPage = {
+  productId: 2,
+  name: 'Zen Sleep Dynamic Cell&trade; French Lavanda',
   price: 120.3,
   images: [
     {
