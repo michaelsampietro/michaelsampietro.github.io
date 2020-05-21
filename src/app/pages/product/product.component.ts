@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductPage } from 'src/models/product-page';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
@@ -25,26 +25,16 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private cartService: CartService) {
-
+              private cartService: CartService,
+              private router: Router) {
     this.route.params.subscribe(param => {
-      console.log(param.model);
-      if (param.model === 'carbon' || !param.model) {
-        this.selectedProduct = carbon;
-      } else if (param.model === 'pure') {
-        this.selectedProduct = pure;
-      } else if (param.model === 'aloe-vera') {
-        this.selectedProduct = aloeVera;
-      } else if (param.model === 'lavanda') {
-        this.selectedProduct = lavanda;
-      }
+      console.log(param);
+      this.selectProduct(param.model);
     });
 
     this.shippingForm = this.formBuilder.group({
       zip: ['', Validators.required]
     });
-
-    this.currentImage = this.selectedProduct.images[0].image;
   }
 
   ngOnInit(): void {
@@ -55,7 +45,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
     const thumbnails = document.getElementsByClassName('thumbnail')[0].classList.add('active');
   }
 
-  changeImage(image: string, ev: any) {
+  changeImage(image: string, element: any) {
     if (image === this.currentImage) {
       return;
     }
@@ -65,8 +55,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
       thumbnail.classList.remove('active');
     });
 
-    ev.explicitOriginalTarget.offsetParent.classList.add('active');
-
+    element.classList.add('active');
 
     const imageEl = document.getElementById('image');
     imageEl.classList.toggle('animate');
@@ -109,4 +98,25 @@ export class ProductComponent implements OnInit, AfterViewInit {
     }
   }
 
+  private selectProduct(product: string) {
+
+    if (product === 'carbon') {
+      this.selectedProduct = carbon;
+    } else if (product === 'pure') {
+      this.selectedProduct = pure;
+    } else if (product === 'aloe-vera') {
+      this.selectedProduct = aloeVera;
+    } else if (product === 'lavanda') {
+      this.selectedProduct = lavanda;
+    } else {
+      this.selectedProduct = carbon;
+    }
+
+    this.currentImage = this.selectedProduct.images[0].image;
+    window.scrollTo({
+      behavior: 'smooth',
+      left: 0,
+      top: 0
+    });
+  }
 }

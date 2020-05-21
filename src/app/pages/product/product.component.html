@@ -7,35 +7,24 @@
             </div>
 
             <div fxLayout="row" fxLayoutGap="2%" class="p-3">
-                <div class="card no-borders rounded-20 bg-light px-2 py-2 thumbnail"
-                    (click)="changeImage(image.image, $event)"
-                    *ngFor="let image of selectedProduct.images; let i = index;">
-                    <div class="thumbnail" fxFlex="20%" fxLayoutAlign="start stretch" [ngStyle]="{
-                            'background-image': 'url(' + image.thumbnail + ')',
-                            'background-size': 'contain',
-                            'background-position': 'center',
-                            'background-repeat': 'no-repeat',
-                            'max-height': '70px',
-                            'max-width': '70px',
-                            'min-height': '50px',
-                            'min-width': '50px'
-                        }">
-                    </div>
+                <div #element class="card no-borders rounded-20 bg-light px-2 py-2 thumbnail" (click)="changeImage(image.image, element)"
+                    *ngFor="let image of selectedProduct.images; let i = index;" fxFlex="1" fxLayoutAlign="start center">
+                    <img class="img-fluid" [src]="image.thumbnail" [alt]="selectedProduct.name">
                 </div>
             </div>
 
         </div>
         <div class="product-info" fxLayout="column" fxFlex="100" fxFlex.gt-sm="30">
             <p>Travesseiro</p>
-            <p class="product-name text-dark" [innerHTML]="selectedProduct.name"></p>
+            <p class="product-name text-dark text-center text-md-left" [innerHTML]="selectedProduct.name"></p>
 
-            <hr class="w-75 ml-0 mb-0">
+            <hr class="w-75 m-auto ml-md-0 mb-md-0">
 
-            <app-shipping></app-shipping>
+            <app-shipping class="text-center text-md-left"></app-shipping>
 
-            <hr class="w-75 ml-0 mt-1">
+            <hr class="w-75 m-auto ml-md-0 mb-md-1">
 
-            <div class="price-wrapper">
+            <div class="price-wrapper text-center text-md-left">
                 <span>Subtotal:</span>
                 <p>{{selectedProduct.price | currency:'BRL'}}</p>
 
@@ -43,7 +32,7 @@
                 <span>{{selectedProduct.price * .9 | currency:'BRL'}} à vista (10% de desconto)</span>
             </div>
 
-            <div class="text-left py-3">
+            <div class="text-center text-md-left py-3">
                 <button (click)="addToCart(selectedProduct)" class="m-auto btn btn-rounded bg-highlight my-3 py-1">Adicionar ao carrinho</button>
             </div>
         </div>
@@ -53,7 +42,6 @@
         <div class="container">
             <p class="product-name">Exclusiva Espuma <br> de ùltima Geração <br> Dynamic Cell &trade;</p>
         </div>
-        <!-- <div id="overlay"></div> -->
     </div>
 
     <div class="container py-5" fxLayout="column" fxLayoutGap="2%">
@@ -62,7 +50,7 @@
             <div class="text-center" *ngIf="i % 2 === 0 || isMobile" fxFlex="100" fxFlex.gt-sm="50">
                 <img style="max-width: 100%;" [ngStyle]="section.imageCss" [src]="section.image" alt="">
             </div>
-            <div fxFlex="100" fxFlex.gt-sm="50" [ngClass]="i % 2 !== 0 && !isMobile ? 'text-right' : 'text-left'">
+            <div fxFlex="100" fxFlex.gt-sm="50" [ngClass]="isMobile ? 'text-center' : i % 2 !== 0 && !isMobile ? 'text-right' : 'text-left'">
                 <p [innerHTML]="section.title" class="main-text"></p>
                 <p [innerHTML]="section.description" style="font-size: 16px !important;"></p>
             </div>
@@ -77,8 +65,7 @@
         <div fxFlex="100" fxFlex.gt-sm="40">
             <img width="100%" [src]="selectedProduct.capa.image" alt="">
         </div>
-        <p fxFlex.gt-sm="30" class="main-text" style="float:right !important ;text-align: right !important;"
-            [innerHTML]="selectedProduct.capa.title"></p>
+        <p fxFlex.gt-sm="30" class="main-text text-center text-md-right" [innerHTML]="selectedProduct.capa.title"></p>
     </div>
 
     <div style="background-color: #fcfafa;" class="py-5 mt-4">
@@ -91,14 +78,20 @@
                     <img class="w-100" src="https://zen-sleep.s3.amazonaws.com/images/product/wire-top@2x.png" alt="">
                 </div>
                 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5%">
-                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/atoxico.png" alt="Travesseiro atóxico e produzido no Brasil">
+                    <div>
+                        <img style="max-width: 100%;" src="https://zen-sleep.s3.amazonaws.com/images/product/selos/atoxico.png" alt="Travesseiro atóxico e produzido no Brasil">
+                    </div>
                     <p>
                         Com a última tecnologia gás HFO que não agride a Camada de Ozônio e o Meio Ambiente
                     </p>
                 </div>
                 <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5%">
-                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/lavavel.png" alt="Travesseiro lavável">
-                    <img src="https://zen-sleep.s3.amazonaws.com/images/product/selos/eco.png" alt="Travesseiro Eco Flexx">
+                    <div>
+                        <img style="max-width: 100%;" src="https://zen-sleep.s3.amazonaws.com/images/product/selos/lavavel.png" alt="Travesseiro lavável">
+                    </div>
+                    <div>
+                        <img style="max-width: 100%;" src="https://zen-sleep.s3.amazonaws.com/images/product/selos/eco.png" alt="Travesseiro Eco Flexx">
+                    </div>
                 </div>
             </div>
             <div style="font-size: 14px !important;" fxLayout="column" fxFlex="100" fxFlex.gt-sm="50" class="py-2">

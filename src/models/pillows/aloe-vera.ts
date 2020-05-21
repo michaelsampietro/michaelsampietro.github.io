@@ -27,24 +27,24 @@ export const aloeVera: ProductPage = {
         'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/imagens/capa-aloe-vera.png',
     },
   ],
-  dynamicCellBackground: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/grande-aloe-vera%402x.png',
+  dynamicCellBackground: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/bg-esmuma-exclusiva-aloe-vera%402x.png',
   sections: [
     {
       title:
-        'Sensação de maciez, conforto e o suporte ideal para a cabeça e o pescoço.',
+        'Sensação de maciez,<br/> conforto e o suporte ideal<br/> para a cabeça e o pescoço.',
       image: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/secoes/3-laterais-aloe-vera%402x.png',
     },
     {
-      title: 'Novo design promove alívio nos pontos de tensão da cabeça,',
+      title: 'Novo design promove<br/>alívio nos pontos de<br/>tensão da cabeça,',
       description:
-        'além de garantir um fluxo contínuo de ar mantendo a temperatura do travesseiro sempre regulada.',
+        'além de garantir um fluxo contínuo de ar<br/>mantendo a temperatura do travesseiro<br/>sempre regulada.',
       image:
         'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/secoes/dois-topview-aloe-vera%402x.png',
     },
     {
-      title: 'Inovadora tecnologia de infusão com Extrato Natural de Aloe Vera',
+      title: 'Inovadora tecnologia<br/>de infusão com Extrato<br/>Natural de Aloe Vera',
       description:
-        'Possui alto poder antioxidante e auxilia no combate aos radicais livres e na desintoxicação corporal.',
+        'Possui alto poder antioxidante e auxilia no<br/>combate aos radicais livres e na<br/>desintoxicação corporal.',
       image: 'https://zen-sleep.s3.amazonaws.com/images/home/ice@2x.png',
     },
   ],

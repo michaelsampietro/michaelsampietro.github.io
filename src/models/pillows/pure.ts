@@ -1,7 +1,7 @@
 import { ProductPage } from '../product-page';
 
 export const pure: ProductPage = {
-  productId: 1,
+  productId: 4,
   name: 'Zen Sleep Dynamic Cell&trade; Carbon Active',
   price: 120.3,
   images: [

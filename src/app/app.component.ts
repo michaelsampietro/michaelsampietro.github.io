@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
           filter(event => event instanceof NavigationEnd)
       ).subscribe((event: NavigationEnd) => {
         this.displayHeader = event.url !== '/';
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
       });
   }
 }
