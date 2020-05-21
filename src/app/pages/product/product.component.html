@@ -53,21 +53,21 @@
         <div class="container">
             <p class="product-name">Exclusiva Espuma <br> de ùltima Geração <br> Dynamic Cell &trade;</p>
         </div>
-        <div id="overlay"></div>
+        <!-- <div id="overlay"></div> -->
     </div>
 
     <div class="container py-5" fxLayout="column" fxLayoutGap="2%">
         <div fxLayout="row wrap" fxLayoutAlign="space-between center"
             *ngFor="let section of selectedProduct.sections; let i=index;">
-            <div *ngIf="i % 2 === 0 || isMobile" fxFlex="100" fxFlex.gt-sm="50">
-                <img class="w-100" [src]="section.image" alt="">
+            <div class="text-center" *ngIf="i % 2 === 0 || isMobile" fxFlex="100" fxFlex.gt-sm="50">
+                <img style="max-width: 100%;" [ngStyle]="section.imageCss" [src]="section.image" alt="">
             </div>
             <div fxFlex="100" fxFlex.gt-sm="50" [ngClass]="i % 2 !== 0 && !isMobile ? 'text-right' : 'text-left'">
                 <p [innerHTML]="section.title" class="main-text"></p>
-                <p [innerHTML]="section.description"></p>
+                <p [innerHTML]="section.description" style="font-size: 16px !important;"></p>
             </div>
-            <div *ngIf="i % 2 !== 0 && !isMobile" fxFlex="100" fxFlex.gt-sm="50">
-                <img class="w-100" [src]="section.image" alt="">
+            <div class="text-center" *ngIf="i % 2 !== 0 && !isMobile" fxFlex="100" fxFlex.gt-sm="50">
+                <img style="max-width: 100%;" [ngStyle]="section.imageCss" [src]="section.image" alt="">
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@ export interface ProductPage {
   productId: number;
   name: string;
   price: number;
-  dynamicCellBackground: string;
+  dynamicCellBackground?: string;
   images: ProductImage[];
   sections: ProductSection[];
   capa: ProductSection;
@@ -13,6 +13,7 @@ interface ProductSection {
   description?: string;
   image: string;
   backgroundColor?: string;
+  imageCss?: any;
 }
 
 interface ProductImage {
