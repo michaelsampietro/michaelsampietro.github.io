@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   images: any[] = [];
   buyPillows = [];
   saibaMaisLink = '/produtos/carbon';
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.images = [
@@ -46,6 +49,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   slideTo(id: number) {
     this.carousel.select('slide_' + id);
+    this.saibaMaisLink = this.images[id].saibaMaisLink;
     const elements = document.getElementsByClassName('thumbnail');
 
     Array.from(elements).forEach((el) => {
@@ -59,5 +63,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     document.getElementById('thumbnail_' + id).classList.remove('d-flex');
     document.getElementById('thumbnail_' + id).classList.add('d-none');
+  }
+
+  verProduto() {
+    console.log(this.saibaMaisLink);
+    this.router.navigate([this.saibaMaisLink]);
   }
 }
