@@ -9,7 +9,8 @@
                 fxLayoutAlign="center center">
                 <img [src]="pillow.image" alt="Travesseiro Zen Sleep {{pillow.name}}" width="130%">
                 <p class="px-3">Travesseiro Zen Sleep <br> Dynamic Cell&trade; {{pillow.name}}</p>
-                <a [routerLink]="pillow.href" class="btn bg-highlight btn-rounded">Saiba mais</a>
+                <a [routerLink]="pillow.href" class="d-none d-md-flex btn bg-highlight btn-rounded">Saiba mais</a>
+                <a [routerLink]="pillow.href" class="d-flex d-md-none btn bg-highlight btn-rounded">Compre</a>
             </a>
         </div>
     </div>
