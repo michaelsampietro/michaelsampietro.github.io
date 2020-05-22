@@ -51,6 +51,7 @@ export const carbon: ProductPage = {
   capa: {
     title: 'Capa Tecido 100% Algodão Natural',
     image: 'https://zen-sleep.s3.amazonaws.com/images/product/carbon/capa-carbon.png',
-    backgroundColor: '#474545'
+    backgroundColor: '#474545',
+    backgroundImage: 'https://zen-sleep.s3.amazonaws.com/images/product/carbon/pattern-bg-capa-carvao.svg'
   },
 };

@@ -61,9 +61,9 @@
     </div>
 
     <div class="container py-3 px-5 no-borders rounded-20" fxLayout="row wrap"
-        fxLayoutAlign="center center" fxLayoutGap="2%" style="color: #FFFFFF" [ngStyle]="{'background-color': selectedProduct.capa.backgroundColor}">
-        <div fxFlex="100" fxFlex.gt-sm="40">
-            <img width="100%" [src]="selectedProduct.capa.image" alt="">
+        fxLayoutAlign="space-between center" fxLayoutGap="2%" style="color: #FFFFFF" [ngStyle]="{'background-color': selectedProduct.capa.backgroundColor}">
+        <div class="text-center" fxFlex="100" fxFlex.gt-sm="60" [ngStyle]="{'background-image': 'url('+selectedProduct.capa.backgroundImage+')', 'background-size':'cover'}">
+            <img style="max-height: 300px; width: auto; max-width: 100%;" [src]="selectedProduct.capa.image" alt="">
         </div>
         <p fxFlex.gt-sm="30" class="main-text text-center text-md-right" [innerHTML]="selectedProduct.capa.title"></p>
     </div>

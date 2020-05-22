@@ -14,6 +14,7 @@ interface ProductSection {
   image: string;
   backgroundColor?: string;
   imageCss?: any;
+  backgroundImage?: string;
 }
 
 interface ProductImage {

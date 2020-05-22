@@ -42,6 +42,7 @@ export const pure: ProductPage = {
   capa: {
     title: 'Capa Tecido 100% Algodão Natural',
     image: 'https://zen-sleep.s3.amazonaws.com/images/product/pure/capa-pure.png',
-    backgroundColor: '#AF9A6B'
+    backgroundColor: '#AF9A6B',
+    backgroundImage: 'https://zen-sleep.s3.amazonaws.com/images/product/pure/pattern-bg-capa-pure.svg'
   },
 };

@@ -59,6 +59,7 @@ export const lavanda: ProductPage = {
   capa: {
     title: 'Capa Tecido 100% Algodão Natural',
     image: 'https://zen-sleep.s3.amazonaws.com/images/product/lavanda/capa-lavanda.png',
-    backgroundColor: '#A872A3'
+    backgroundColor: '#A872A3',
+    backgroundImage: 'https://zen-sleep.s3.amazonaws.com/images/product/lavanda/pattern-bg-capa-lavanda.svg'
   },
 };

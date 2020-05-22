@@ -51,6 +51,7 @@ export const aloeVera: ProductPage = {
   capa: {
     title: 'Capa Tecido 100% Algodão Natural',
     image: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/imagens/capa-aloe-vera.png',
-    backgroundColor: '#669E6C'
+    backgroundColor: '#669E6C',
+    backgroundImage: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/pattern-bg-capa-aloevera.svg'
   },
 };
