@@ -1,10 +1,10 @@
 const PROXY_CONFIG = [
     {
-        context: ['/v2'],
+        context: ['/pagseguro'],
         target: 'https://ws.pagseguro.uol.com.br',
         secure: false,
         logLevel: 'debug',
-        // pathRewrite: { '^/v2': '' }
+        pathRewrite: { '^/pagseguro': '/v2'}
     }
 ];
 
