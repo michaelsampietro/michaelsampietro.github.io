@@ -7,6 +7,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { AlertTypes } from 'src/app/services/alert/alert-types.enum';
+import { PagseguroService } from 'src/app/services/pagseguro/pagseguro.service';
 
 const enum PaymentOptions {
   Nenhum = 0,
@@ -30,8 +31,10 @@ export class CheckoutComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private formBuilder: FormBuilder,
+    private pagSeguroService: PagseguroService,
     private router: Router
   ) {
+
     this.cardForm = this.formBuilder.group({
       number: ['', Validators.required],
       name: ['', Validators.required],
