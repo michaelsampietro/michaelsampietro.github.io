@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "",
-    "start-local": "ng serve --host 0.0.0.0"
+    "start-local": "ng serve --proxy-config proxy.conf.js --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
