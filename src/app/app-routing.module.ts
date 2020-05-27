@@ -20,10 +20,10 @@ export const routes: Routes = [
   { path: 'sacola', component: CartComponent, pathMatch: 'full' },
   { path: 'faq', component: FaqComponent, pathMatch: 'full' },
   { path: 'contato', component: ContactComponent, pathMatch: 'full' },
-  { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [LoginGuard]},
-  { path: 'cadastro', component: CadastroComponent, pathMatch: 'full', canActivate: [LoginGuard] },
-  { path: 'endereco', component: EnderecoComponent, pathMatch: 'full'},
-  { path: 'pagamento', component: CheckoutComponent, pathMatch: 'full', canActivate: [CheckoutGuard] },
+  { path: 'login', component: LoginComponent, pathMatch: 'full', canActivate: [LoginGuard]}, // descontinuado
+  { path: 'cadastro', component: CadastroComponent, pathMatch: 'full' },
+  { path: 'endereco', component: EnderecoComponent, pathMatch: 'full' },
+  { path: 'pagamento', component: CheckoutComponent, pathMatch: 'full' },
   { path: '**', component: ErrorComponent },
 ];
 

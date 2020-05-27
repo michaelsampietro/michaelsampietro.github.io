@@ -41,11 +41,6 @@
         </div>
 
         <mat-form-field appearance="none">
-            <mat-label class="label">Ponto de referência</mat-label>
-            <input matInput type="text" [formControl]="reference">
-        </mat-form-field>
-
-        <mat-form-field appearance="none">
             <mat-label class="label">Bairro</mat-label>
             <input matInput readonly type="text" [formControl]="neighbourhood" required>
             <mat-error *ngIf="neighbourhood.touched && neighbourhood.errors">Campo obrigatório.</mat-error>
@@ -69,7 +64,7 @@
             </div>
         </div>
 
-        <button class="btn bg-highlight btn-rounded m-auto" type="submit"
-            [disabled]="!enderecoForm.valid">Continuar</button>
+        <button class="btn bg-highlight btn-rounded m-auto" type="submit" [disabled]="!enderecoForm.valid">Continuar</button>
+        <a class="m-auto" [routerLink]="['/cadastro']">< Voltar</a>
     </form>
 </div>

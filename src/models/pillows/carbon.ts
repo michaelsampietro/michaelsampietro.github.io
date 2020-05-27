@@ -3,7 +3,7 @@ import { ProductPage } from '../product-page';
 export const carbon: ProductPage = {
   productId: 1,
   name: 'Zen Sleep Dynamic Cell&trade; Carbon Active',
-  price: 120.3,
+  price: 120.30,
   images: [
     {
       image: 'https://zen-sleep.s3.amazonaws.com/images/product/carbon/carvao-ativado_01--3-4.png',

@@ -39,11 +39,19 @@ export class CartOverviewComponent implements OnInit {
   }
 
   redirect() {
-    if (this.userService.isLogged()) {
+    const user = this.userService.getUser();
+    const address = this.userService.getAddress();
+    if (user && address) {
       this.router.navigate(['/pagamento']);
+    } else if (!user) {
+      sessionStorage.setItem('redirect', '/pagamento');
+      this.router.navigate(['/cadastro']);
+    } else if (!address) {
+      sessionStorage.setItem('redirect', '/pagamento');
+      this.router.navigate(['/endereco']);
     } else {
       sessionStorage.setItem('redirect', '/pagamento');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/cadastro']);
     }
   }
 

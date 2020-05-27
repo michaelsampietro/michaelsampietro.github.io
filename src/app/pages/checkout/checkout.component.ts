@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert/alert.service';
 import { AlertTypes } from 'src/app/services/alert/alert-types.enum';
 import { PagseguroService } from 'src/app/services/pagseguro/pagseguro.service';
+import { Product } from 'src/models/product';
+import { CartService } from 'src/app/services/cart.service';
 
 const enum PaymentOptions {
   Nenhum = 0,
@@ -22,6 +24,7 @@ const enum PaymentOptions {
 })
 export class CheckoutComponent implements OnInit {
 
+  compraFinalizada = false;
   address: Address;
   user: User;
   showButton = false;
@@ -32,6 +35,7 @@ export class CheckoutComponent implements OnInit {
     private alertService: AlertService,
     private formBuilder: FormBuilder,
     private pagSeguroService: PagseguroService,
+    private cartService: CartService,
     private router: Router
   ) {
 
@@ -51,7 +55,7 @@ export class CheckoutComponent implements OnInit {
 
   changeAddress() {
     sessionStorage.setItem('redirect', '/pagamento');
-    this.router.navigate(['/endereco']);
+    this.router.navigate(['/cadastro']);
   }
 
   tabChanged(event: MatTabChangeEvent): void {
@@ -68,6 +72,8 @@ export class CheckoutComponent implements OnInit {
     console.log('Cartão: ', cardInfo);
     // Tratar os dados do cartão aqui
 
+    this.pagSeguroService.getCardBrand(cardInfo.number);
+
     // Se der sucesso, chamar o alert service com mensagem de sucesso
     const dialog = this.alertService.show({
       title: 'Obrigado pela compra',
@@ -78,33 +84,20 @@ export class CheckoutComponent implements OnInit {
 
     dialog.afterClosed().toPromise().then(e => {
       this.router.navigate(['/']);
-    })
+    });
 
     // Caso contrario, chamar o alert service com mensagem de erro
   }
 
-  boleto(option: number) {
+  async boleto(option: number) {
     if (option === PaymentOptions.Boleto) {
-      // gerar boleto aqui
-      console.log('boleto');
-
-      // Mensagem de confirmação
-      const dialog = this.alertService.show({
-        title: 'Obrigado pela compra',
-        message: 'O boleto foi enviado para o seu email. Lembre-se que após o pagamento, a confirmação pode demorar até 2 dias úteis.',
-        type: AlertTypes.success,
-        showButtons: false
-      });
-
-      dialog.afterClosed().toPromise().then(e => {
-        this.router.navigate(['/']);
-      });
+      this.pagSeguroService.gerarBoleto(this.cartService.getCart(), this.userService.getUser(), this.address);
     }
   }
 
   private getAddress() {
     this.address = JSON.parse(localStorage.getItem('address'));
-    console.log(this.address);
+    // console.log(this.address);
   }
 
   // Getters

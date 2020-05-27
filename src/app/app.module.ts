@@ -17,7 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ProductComponent } from './pages/product/product.component';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 import { CartComponent } from './pages/cart/cart.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
@@ -60,13 +60,14 @@ registerLocaleData(localePt, 'pt');
     ReactiveFormsModule,
     MatNativeDateModule,
     NgxMaskModule.forRoot(),
-    MaterialImports
+    MaterialImports,
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always' } },
     { provide: LOCALE_ID, useValue: 'pt' },
     LoginGuard,
-    CheckoutGuard
+    CheckoutGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })

@@ -3,7 +3,7 @@ import { ProductPage } from '../product-page';
 export const lavanda: ProductPage = {
   productId: 2,
   name: 'Zen Sleep Dynamic Cell&trade; French Lavanda',
-  price: 120.3,
+  price: 120.30,
   images: [
     {
       image: 'https://zen-sleep.s3.amazonaws.com/images/product/lavanda/Lavanda_01-3-4-.png',

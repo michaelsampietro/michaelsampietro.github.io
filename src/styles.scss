@@ -42,6 +42,11 @@ a {
     &:visited {
         color: currentColor;
     }
+
+    &.link-blue {
+        color: #007bff !important;
+        text-decoration: underline !important;
+    }
 }
 
 .btn-rounded {

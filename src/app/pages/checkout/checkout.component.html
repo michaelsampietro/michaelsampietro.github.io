@@ -1,12 +1,13 @@
 <div class="container py-5">
-    <div fxLayout="column" fxLayoutGap="5%">
+    <div *ngIf="!compraFinalizada" fxLayout="column" fxLayoutGap="5%">
         <p class="main-text text-dark">Endereço de entrega</p>
 
         <div id="endereco" class="card rounded-20 px-4 py-2" fxLayout="row wrap" fxLayoutAlign="center center">
             <div fxFlex="100" fxFlex.gt-sm="33" class="p-3">
                 <p>{{user.name}}</p>
+                <p class="m-0">{{user.cpf | mask:'000.000.000-00'}}</p>
                 <p class="m-0">{{user.email}}</p>
-                <p class="m-0">{{user.phone | mask:'(00) 0000-0000'}}</p>
+                <p class="m-0">{{user.phoneAreaCode + user.phone | mask:'(00) 0000-0000'}}</p>
             </div>
 
             <div fxFlex="60" fxFlex.gt-sm="33" class="p-3 text-left" fxLayout="column"
@@ -95,7 +96,10 @@
                 </mat-tab-group>
             </div>
         </div>
+    </div>
 
-
+    <div *ngIf="compraFinalizada">
+        <h1>Sucesso!</h1>
     </div>
 </div>
+

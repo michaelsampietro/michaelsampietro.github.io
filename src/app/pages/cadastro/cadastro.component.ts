@@ -17,16 +17,25 @@ export class CadastroComponent implements OnInit {
               private userService: UserService,
               private loaderService: LoaderService,
               private router: Router) {
-    this.cadastroForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      birth: ['', [Validators.required]],
-      sex: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      whatsappAlerts: true,
-      emailAlerts: true,
-    });
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user) {
+      this.cadastroForm = this.formBuilder.group({
+        email: [user.email, [Validators.required, Validators.email]],
+        name: [user.name, [Validators.required]],
+        cpf: [user.cpf, [Validators.required]],
+        phoneAreaCode: [user.phoneAreaCode, [Validators.required]],
+        phone: [user.phone, [Validators.required]],
+      });
+    } else {
+      this.cadastroForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        name: ['', [Validators.required]],
+        cpf: ['', [Validators.required]],
+        phoneAreaCode: ['', [Validators.required]],
+        phone: ['', [Validators.required]],
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -35,9 +44,6 @@ export class CadastroComponent implements OnInit {
   register(values: any) {
     const loader = this.loaderService.open();
     const user = values as User;
-    const birth = new Date(values.birth);
-    user.birth = birth.getTime();
-    user.id = new Date().getTime();
 
     const success = this.userService.register(user);
 
@@ -52,12 +58,8 @@ export class CadastroComponent implements OnInit {
 
   // getters
   get email() { return this.cadastroForm.get('email'); }
-  get password() { return this.cadastroForm.get('password'); }
   get name() { return this.cadastroForm.get('name'); }
-  get birth() { return this.cadastroForm.get('birth'); }
-  get sex() { return this.cadastroForm.get('sex'); }
   get phone() { return this.cadastroForm.get('phone'); }
-  get whatsappAlerts() { return this.cadastroForm.get('whatsappAlerts'); }
-  get emailAlerts() { return this.cadastroForm.get('emailAlerts'); }
-
+  get cpf() { return this.cadastroForm.get('cpf'); }
+  get phoneAreaCode() { return this.cadastroForm.get('phoneAreaCode'); }
 }

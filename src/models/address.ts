@@ -11,12 +11,11 @@ export interface EnderecoApi {
 
 export interface Address {
   name: string;
-  cep: string;
-  address: string;
-  number: string;
-  complement: string;
-  reference: string;
-  neighbourhood: string;
-  city: string;
-  state: string;
+  cep: string; // shippingAddressPostalCode
+  address: string; // shippingAddressStreet
+  number: string; // shippingAddressNumber
+  complement: string; // shippingAddressComplement
+  neighbourhood: string; // shippingAddressDistrict
+  city: string; // shippingAddressCity
+  state: string; // shippingAddressState
 }

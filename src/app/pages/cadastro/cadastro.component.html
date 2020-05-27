@@ -9,45 +9,36 @@
         </mat-form-field>
 
         <mat-form-field appearance="none">
-            <mat-label>Senha</mat-label>
-            <input matInput type="password" [formControl]="password" required>
-            <mat-error *ngIf="password.touched && password.errors">Campo obrigatório.</mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="none">
-            <mat-label>Seu nome e sobrenome</mat-label>
+            <mat-label>Nome completo</mat-label>
             <input matInput type="text" [formControl]="name" required >
             <mat-error *ngIf="name.touched && name.errors">Campo obrigatório.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="none">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" [formControl]="birth" readonly>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker startView="multi-year"></mat-datepicker>
-            <mat-error *ngIf="birth.touched && birth.errors">Campo obrigatório.</mat-error>
+            <mat-label>CPF</mat-label>
+            <input matInput type="tel" [mask]="'000.000.000-00'" [formControl]="cpf" required>
+            <mat-error *ngIf="cpf.touched && cpf.errors">Campo obrigatório.</mat-error>
         </mat-form-field>
 
-        <label class="label">Sexo</label>
-        <mat-radio-group [formControl]="sex" aria-label="Select an option">
-            <mat-radio-button value="masculino">Masculino</mat-radio-button>
-            <mat-radio-button value="feminino">Feminino</mat-radio-button>
-        </mat-radio-group>
-
-        <mat-form-field appearance="none">
-            <mat-label>Telefone</mat-label>
-            <input matInput type="tel" [mask]="'(00) 0000-0000'" [formControl]="phone" required>
-            <mat-error *ngIf="phone.touched && phone.errors">Campo obrigatório.</mat-error>
-        </mat-form-field>
-
-        <div>
-            <mat-checkbox class="w-100" [formControl]="whatsappAlerts">Receber notificações por Whatsapp</mat-checkbox>
+        <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="20">
+                <mat-form-field  appearance="none">
+                    <mat-label>DDD</mat-label>
+                    <input matInput type="tel" [mask]="'(00)'" [formControl]="phoneAreaCode" required>
+                    <mat-error *ngIf="phoneAreaCode.touched && phoneAreaCode.errors">Campo obrigatório.</mat-error>
+                </mat-form-field>
+            </div>
+    
+            <div fxFlex="70">
+                <mat-form-field  appearance="none" class="w-100">
+                    <mat-label>Telefone</mat-label>
+                    <input class="w-100" matInput type="tel" [mask]="'00000-0000'" [formControl]="phone" required>
+                    <mat-error *ngIf="phone.touched && phone.errors">Campo obrigatório.</mat-error>
+                </mat-form-field>
+            </div>
         </div>
-        <div>
-            <mat-checkbox class="w-100" [formControl]="emailAlerts">Desejo receber ofertas por email</mat-checkbox>
-        </div>
+
 
         <button class="btn bg-highlight btn-rounded m-auto" type="submit" [disabled]="!cadastroForm.valid">Continuar</button>
-        <p class="pt-3 m-auto">Já possui cadastro? <a [routerLink]="['/login']"><u>Entre por aqui</u></a></p>
     </form>
 </div>
