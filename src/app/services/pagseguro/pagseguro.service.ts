@@ -51,11 +51,9 @@ export class PagseguroService {
       cart.products.forEach( (product, index) => {
         const i = index + 1;
         const precoFormatado = (Math.round(product.price * 100) / 100).toFixed(2);
-        console.log(precoFormatado);
         products += '&itemId' + i + '=' + product.id +
         '&itemDescription' + i + '=' + product.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '') +
-        // '&itemAmount' + i + '=' + product.price +
-        '&itemAmount' + i + '=10.00' +
+        '&itemAmount' + i + '=' + precoFormatado +
         '&itemQuantity' + i + '=' + product.quantity;
       });
 
