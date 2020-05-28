@@ -29,6 +29,7 @@ export class CheckoutComponent implements OnInit {
   user: User;
   showButton = false;
   cardForm: FormGroup = null;
+  cardBrandImage = '';
 
   constructor(
     private userService: UserService,
@@ -45,6 +46,7 @@ export class CheckoutComponent implements OnInit {
       month: ['', Validators.required],
       year: ['', Validators.required],
       security: ['', Validators.required],
+      sameAddress: [true]
     });
   }
 
@@ -72,7 +74,10 @@ export class CheckoutComponent implements OnInit {
     console.log('Cartão: ', cardInfo);
     // Tratar os dados do cartão aqui
 
-    this.pagSeguroService.getCardBrand(cardInfo.number);
+    this.pagSeguroService.getCardBrand(cardInfo.number).then(res => {
+      console.log(res);
+    });
+    // console.log(brand);
 
     // Se der sucesso, chamar o alert service com mensagem de sucesso
     const dialog = this.alertService.show({
@@ -83,21 +88,16 @@ export class CheckoutComponent implements OnInit {
     });
 
     dialog.afterClosed().toPromise().then(e => {
-      this.router.navigate(['/']);
+      // this.router.navigate(['/']);
     });
-
-    // Caso contrario, chamar o alert service com mensagem de erro
   }
 
-  async boleto(option: number) {
-    if (option === PaymentOptions.Boleto) {
-      this.pagSeguroService.gerarBoleto(this.cartService.getCart(), this.userService.getUser(), this.address);
-    }
+  async boleto() {
+    this.pagSeguroService.gerarBoleto(this.cartService.getCart(), this.userService.getUser(), this.address);
   }
 
   private getAddress() {
     this.address = JSON.parse(localStorage.getItem('address'));
-    // console.log(this.address);
   }
 
   // Getters
