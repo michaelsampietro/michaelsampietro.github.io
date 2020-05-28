@@ -77,6 +77,12 @@
                                     <mat-error *ngIf="security.touched && security.errors">Campo obrigatório.</mat-error>
                                 </mat-form-field>
                             </div>
+
+                            <select formControlName="parcelas" *ngIf="parcelas.length > 0">
+                                <option *ngFor="let parcela of parcelas" [value]="parcela.totalAmount">
+                                    {{parcela.quantity}} x <span *ngIf="parcela.interestFree">sem juros</span> de {{parcela.installmentAmount | currency:'BRL'}}
+                                </option>
+                            </select>
                             
                             <button mat-flat-button [disabled]="!cardForm.invalid" class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit" (click)="card(cardForm.value)">Finalizar compra</button>
                         </form>

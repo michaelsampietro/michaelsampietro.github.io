@@ -10,6 +10,7 @@ import { AlertTypes } from 'src/app/services/alert/alert-types.enum';
 import { PagseguroService } from 'src/app/services/pagseguro/pagseguro.service';
 import { Product } from 'src/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { Observable } from 'rxjs';
 
 const enum PaymentOptions {
   Nenhum = 0,
@@ -28,8 +29,11 @@ export class CheckoutComponent implements OnInit {
   address: Address;
   user: User;
   showButton = false;
+
   cardForm: FormGroup = null;
   cardBrandImage = '';
+  parcelas: any[] = [];
+
 
   constructor(
     private userService: UserService,
@@ -46,7 +50,8 @@ export class CheckoutComponent implements OnInit {
       month: ['', Validators.required],
       year: ['', Validators.required],
       security: ['', Validators.required],
-      sameAddress: [true]
+      sameAddress: [true],
+      parcelas: ''
     });
   }
 
@@ -63,6 +68,13 @@ export class CheckoutComponent implements OnInit {
   tabChanged(event: MatTabChangeEvent): void {
     if (event.index === PaymentOptions.Cartao) {
       this.showButton = true;
+      this.pagSeguroService.obterParcelas(299.90);
+
+      this.pagSeguroService.parcelas.subscribe(parcelas => {
+        this.parcelas = parcelas;
+        console.log(this.parcelas);
+      });
+
     } else if (event.index === PaymentOptions.Boleto) {
       this.showButton = true;
     } else {

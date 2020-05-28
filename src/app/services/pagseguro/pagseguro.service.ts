@@ -9,6 +9,7 @@ import { parseString } from 'xml2js';
 import { AlertService } from '../alert/alert.service';
 import { AlertTypes } from '../alert/alert-types.enum';
 import { Router } from '@angular/router';
+import { Observable, Subject } from 'rxjs';
 
 declare const PagSeguroDirectPayment: any;
 
@@ -19,14 +20,20 @@ export class PagseguroService {
 
   sessionId = '';
 
+  parcelas = new Subject<any>();
+
+
   constructor(private httpClient: HttpClient, private alertService: AlertService, private router: Router ) {
     // Iniciando sessão pagseguro
     this.httpClient.post(
-      // `/pagseguro/sessions?email=${email}&token=${token}`,
-      // `https://ws.sandbox.pagseguro.uol.com.br/v2/checkout/sessions?email=${email}&token=${token}`,
-      'https://ws.sandbox.pagseguro.uol.com.br/v2/sessions?email=mssampietro@gmail.com&token=33221184A7C14A67A5622625BD014ACB',
+      `/pagseguro/sessions?email=${email}&token=${token}`,
       {},
-      { responseType: 'text'}).subscribe(data => {
+      {
+        responseType: 'text',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }
+      }).subscribe(data => {
         const xml = new window.DOMParser().parseFromString((data as string), 'text/xml');
         this.sessionId = xml.activeElement.textContent;
         PagSeguroDirectPayment.setSessionId(this.sessionId);
@@ -49,8 +56,27 @@ export class PagseguroService {
     console.log('2');
   }
 
-  obterParcelas() {
+  obterParcelas(amount: number) {
+    const self = this;
+    PagSeguroDirectPayment.getInstallments({
+      amount,
+      maxInstallmentNoInterest: 3,
+      brand: 'visa',
+      success(response) {
+          // Retorna as opções de parcelamento disponíveis
+          self.salvarParcelas(response.installments['visa']);
+      },
+      error(response) {
+          // callback para chamadas que falharam.
+      },
+      complete(response){
+          // Callback para todas chamadas.
+      }
+    });
+  }
 
+  private salvarParcelas(parcelas) {
+    this.parcelas.next(parcelas);
   }
 
   async pagarComCartao(card: any) {
@@ -114,6 +140,7 @@ export class PagseguroService {
 
       const header = new Headers();
       header.append('Content-Type', 'application/x-www-form-urlencoded');
+      header.append('Access-Control-Allow-Origin', 'https://sandbox.pagseguro.uol.com.br');
 
       this.httpClient.post(endpoint, body, { responseType: 'text', headers: { 'Content-Type': 'application/x-www-form-urlencoded'}}).subscribe(
         res => {
