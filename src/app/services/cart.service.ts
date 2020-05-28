@@ -59,6 +59,16 @@ export class CartService {
     });
   }
 
+  total(): number {
+    const cart = this.getCart();
+    let total = 0;
+    cart.products.forEach(product => {
+      total += (product.price * product.quantity);
+    });
+
+    return Number.parseFloat((Math.round(total * 100) / 100).toFixed(2)) + cart.shipping;
+  }
+
   // Como não tenho backend, estou fazendo um controle apenas usando o localstorage.
   getCart(): Cart {
     const cart = JSON.parse(localStorage.getItem('cart')) as Cart;

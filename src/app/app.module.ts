@@ -29,6 +29,7 @@ import { LoginGuard } from './guards/login.guard';
 import { CheckoutGuard } from './guards/checkout.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 
 export let options: Partial<IConfig> | (() => Partial<IConfig>);
 registerLocaleData(localePt, 'pt');
@@ -59,6 +60,7 @@ registerLocaleData(localePt, 'pt');
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatSelectModule,
     NgxMaskModule.forRoot(),
     MaterialImports,
   ],

@@ -11,6 +11,8 @@ import { PagseguroService } from 'src/app/services/pagseguro/pagseguro.service';
 import { Product } from 'src/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { Observable } from 'rxjs';
+import { options } from 'src/app/app.module';
+import { Installment } from 'src/models/installment';
 
 const enum PaymentOptions {
   Nenhum = 0,
@@ -31,9 +33,9 @@ export class CheckoutComponent implements OnInit {
   showButton = false;
 
   cardForm: FormGroup = null;
-  cardBrandImage = '';
-  parcelas: any[] = [];
-
+  cardBrand = '';
+  installments: Installment[] = [];
+  selectedInstallment: Installment = null;
 
   constructor(
     private userService: UserService,
@@ -50,8 +52,17 @@ export class CheckoutComponent implements OnInit {
       month: ['', Validators.required],
       year: ['', Validators.required],
       security: ['', Validators.required],
+
       sameAddress: [true],
-      parcelas: ''
+
+      street: '',
+      addressNumber: '',
+      complement: '',
+      district: '',
+      postalcode: '',
+      city: '',
+      state: '',
+      brand: ''
     });
   }
 
@@ -68,13 +79,6 @@ export class CheckoutComponent implements OnInit {
   tabChanged(event: MatTabChangeEvent): void {
     if (event.index === PaymentOptions.Cartao) {
       this.showButton = true;
-      this.pagSeguroService.obterParcelas(299.90);
-
-      this.pagSeguroService.parcelas.subscribe(parcelas => {
-        this.parcelas = parcelas;
-        console.log(this.parcelas);
-      });
-
     } else if (event.index === PaymentOptions.Boleto) {
       this.showButton = true;
     } else {
@@ -82,14 +86,38 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+  getCardInfoAndInstallments(cardNumber: string) {
+    if (cardNumber.length >= 6) {
+      this.pagSeguroService.getCardBrand(cardNumber.substr(0, 6));
+
+      this.pagSeguroService.cardBrand.subscribe(brand => {
+        this.cardBrand = brand;
+        this.brand.patchValue(brand);
+        this.pagSeguroService.getInstallments(this.cartService.total(), brand);
+      });
+
+      this.pagSeguroService.installments.subscribe(parcelas => {
+        this.installments = parcelas;
+        this.selectedInstallment = this.installments[0];
+      });
+    }
+  }
+
+  setInstallment(option) {
+    this.selectedInstallment = option.value as Installment;
+    console.log(this.selectedInstallment);
+  }
+
   card(cardInfo: any) {
     console.log('Cartão: ', cardInfo);
-    // Tratar os dados do cartão aqui
 
-    this.pagSeguroService.getCardBrand(cardInfo.number).then(res => {
-      console.log(res);
-    });
-    // console.log(brand);
+    if (cardInfo.sameAddress) {
+      this.setCardAddress();
+    } else {
+      // tratar aqui o endereço.
+    }
+
+    this.pagSeguroService.payWithCreditCard(cardInfo, this.selectedInstallment);
 
     // Se der sucesso, chamar o alert service com mensagem de sucesso
     const dialog = this.alertService.show({
@@ -108,8 +136,20 @@ export class CheckoutComponent implements OnInit {
     this.pagSeguroService.gerarBoleto(this.cartService.getCart(), this.userService.getUser(), this.address);
   }
 
-  private getAddress() {
-    this.address = JSON.parse(localStorage.getItem('address'));
+  private getAddress(): Address {
+    return this.address = JSON.parse(localStorage.getItem('address')) as Address;
+  }
+
+  private setCardAddress() {
+    const address = this.getAddress();
+
+    this.street.patchValue(address.address);
+    this.addressNumber.patchValue(address.number);
+    this.complement.patchValue(address.complement);
+    this.district.patchValue(address.neighbourhood);
+    this.postalcode.patchValue(address.cep);
+    this.city.patchValue(address.city);
+    this.state.patchValue(address.state);
   }
 
   // Getters
@@ -118,4 +158,12 @@ export class CheckoutComponent implements OnInit {
   get month() { return this.cardForm.get('month'); }
   get year() { return this.cardForm.get('year'); }
   get security() { return this.cardForm.get('security'); }
+  get street() { return this.cardForm.get('street'); }
+  get addressNumber() { return this.cardForm.get('addressNumber'); }
+  get complement() { return this.cardForm.get('complement'); }
+  get district() { return this.cardForm.get('district'); }
+  get postalcode() { return this.cardForm.get('postalcode'); }
+  get city() { return this.cardForm.get('city'); }
+  get state() { return this.cardForm.get('state'); }
+  get brand() { return this.cardForm.get('brand'); }
 }

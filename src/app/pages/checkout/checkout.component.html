@@ -43,7 +43,7 @@
                             <div class="py-5 px-4 my-2 card rounded-20">
                                 <mat-form-field appearance="none">
                                     <mat-label class="label">Número do cartão</mat-label>
-                                    <input matInput type="text" [formControl]="number" required>
+                                    <input matInput type="text" (focusout)="getCardInfoAndInstallments($event.target.value)" [formControl]="number" required>
                                     <mat-error *ngIf="number.touched && number.errors">Campo obrigatório.</mat-error>
                                 </mat-form-field>
 
@@ -58,33 +58,42 @@
                                     <div fxFlex="14" style="position: relative;">
                                         <label class="label custom-label">Vencimento</label>
                                         <mat-form-field appearance="none">
-                                            <input matInput type="text" [mask]="'00'" [formControl]="month" required placeholder="Mês">
+                                            <input matInput type="text" [mask]="'00'" [formControl]="month" required placeholder="XX">
                                             <mat-error *ngIf="month.touched && month.errors">Campo obrigatório.</mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div fxFlex="14">
 
                                         <mat-form-field appearance="none">
-                                            <input matInput type="text" [mask]="'00'" [formControl]="year" placeholder="Ano" required>
+                                            <input matInput type="text" [mask]="'0000'" [formControl]="year" placeholder="XXXX" required>
                                             <mat-error *ngIf="year.touched && year.errors">Campo obrigatório.</mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
 
-                                <mat-form-field appearance="none">
-                                    <mat-label>Cód. de segurança</mat-label>
-                                    <input matInput type="text" [mask]="'0009'" [formControl]="security" required>
-                                    <mat-error *ngIf="security.touched && security.errors">Campo obrigatório.</mat-error>
-                                </mat-form-field>
+                                <div fxLayout="row" fxLayoutAlign="space-between center">
+                                    <div fxFlex="20">
+                                        <mat-form-field appearance="none">
+                                            <mat-label class="label">Cód. de segurança</mat-label>
+                                            <input matInput type="text" [mask]="'0009'" [formControl]="security" required>
+                                            <mat-error *ngIf="security.touched && security.errors">Campo obrigatório.</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxFlex="70">
+                                        <mat-form-field class="w-100">
+                                            <mat-label>Opções de parcelamento</mat-label>
+                                            <mat-select (selectionChange)="setInstallment($event)" class="label" [disabled]="installments.length === 0">
+                                                <mat-option *ngFor="let installment of installments" [value]="installment">
+                                                    {{installment.quantity}} x <span *ngIf="installment.interestFree">sem juros</span> de {{installment.installmentAmount | currency:'BRL'}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                             </div>
 
-                            <select formControlName="parcelas" *ngIf="parcelas.length > 0">
-                                <option *ngFor="let parcela of parcelas" [value]="parcela.totalAmount">
-                                    {{parcela.quantity}} x <span *ngIf="parcela.interestFree">sem juros</span> de {{parcela.installmentAmount | currency:'BRL'}}
-                                </option>
-                            </select>
                             
-                            <button mat-flat-button [disabled]="!cardForm.invalid" class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit" (click)="card(cardForm.value)">Finalizar compra</button>
+                            <button mat-flat-button class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit" (click)="card(cardForm.value)">Finalizar compra</button>
                         </form>
                     </mat-tab>
                     <mat-tab label="Boleto bancário">
