@@ -4,4 +4,5 @@ export interface User {
     phone: string;
     phoneAreaCode: string;
     cpf: string;
+    birth: string;
 }

@@ -26,6 +26,7 @@ export class CadastroComponent implements OnInit {
         cpf: [user.cpf, [Validators.required]],
         phoneAreaCode: [user.phoneAreaCode, [Validators.required]],
         phone: [user.phone, [Validators.required]],
+        birth: [user.birth, [Validators.required]]
       });
     } else {
       this.cadastroForm = this.formBuilder.group({
@@ -34,6 +35,7 @@ export class CadastroComponent implements OnInit {
         cpf: ['', [Validators.required]],
         phoneAreaCode: ['', [Validators.required]],
         phone: ['', [Validators.required]],
+        birth: ['', [Validators.required]]
       });
     }
   }
@@ -62,4 +64,5 @@ export class CadastroComponent implements OnInit {
   get phone() { return this.cadastroForm.get('phone'); }
   get cpf() { return this.cadastroForm.get('cpf'); }
   get phoneAreaCode() { return this.cadastroForm.get('phoneAreaCode'); }
+  get birth() { return this.cadastroForm.get('birth'); }
 }

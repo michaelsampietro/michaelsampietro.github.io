@@ -3,7 +3,8 @@ import { ProductPage } from '../product-page';
 export const aloeVera: ProductPage = {
   productId: 3,
   name: 'Zen Sleep Dynamic Cell&trade; Aloe Vera',
-  price: 120.30,
+  // price: 299.90,
+  price: 0.50,
   images: [
     {
       image: 'https://zen-sleep.s3.amazonaws.com/images/product/aloe-vera/imagens/aloe-vera_01-3-4.png',

@@ -66,7 +66,8 @@ export class CartService {
       total += (product.price * product.quantity);
     });
 
-    return Number.parseFloat((Math.round(total * 100) / 100).toFixed(2)) + cart.shipping;
+    // return Number.parseFloat((Math.round(total * 100) / 100).toFixed(2)) + cart.shipping;
+    return Number.parseFloat((Math.round(total * 100) / 100).toFixed(2));
   }
 
   // Como não tenho backend, estou fazendo um controle apenas usando o localstorage.

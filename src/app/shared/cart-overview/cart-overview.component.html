@@ -23,9 +23,9 @@
     </div>
 
     <div class="w-75 m-auto">
-        <span fxLayoutAlign="end">Em até 12 de {{ cartTotal()/12 | currency:'BRL' }}</span>
-        <span fxLayoutAlign="end">{{ cartTotal() * .9 | currency:'BRL' }} à vista</span>
-        <span fxLayoutAlign="end">(10% de desconto)</span>
+        <span fxLayoutAlign="end">Em até 3x sem juros de {{ cartTotal()/3 | currency:'BRL' }}</span>
+        <!-- <span fxLayoutAlign="end">{{ cartTotal() * .9 | currency:'BRL' }} à vista</span> -->
+        <!-- <span fxLayoutAlign="end">(10% de desconto)</span> -->
     </div>
 
     <button (click)="redirect()" *ngIf="showButton" class="btn bg-highlight btn-rounded m-auto px-4">Continuar</button>

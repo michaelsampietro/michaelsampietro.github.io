@@ -39,7 +39,7 @@
                         </div>
                     </mat-tab>
                     <mat-tab label="Cartão de crédito">
-                        <form [formGroup]="cardForm" (ngSubmit)="card(cardForm.value)">
+                        <form [formGroup]="cardForm">
                             <div class="py-5 px-4 my-2 card rounded-20">
                                 <mat-form-field appearance="none">
                                     <mat-label class="label">Número do cartão</mat-label>
@@ -90,10 +90,69 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                            </div>
 
+                                <mat-checkbox (change)="toggleAddressForm($event)" formControlName="sameAddress">O endereço de cobrança é o mesmo do endereço de entrega.</mat-checkbox>
+
+                                <div fxLayout="column" *ngIf="showAddressForm">
+                                    <mat-form-field appearance="none">
+                                        <mat-label class="label">CEP</mat-label>
+                                        <input matInput (keyup)="checkCEP(postalcode.value)" type="text" [mask]="'00000-000'" [formControl]="postalcode" required>
+                                        <u class="text-right d-block text-dark">
+                                            <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Não sei meu CEP</a>                
+                                        </u>
+                                        <mat-error *ngIf="postalcode.touched && postalcode.errors">Campo obrigatório.</mat-error>
+                                    </mat-form-field>
                             
-                            <button mat-flat-button class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit" (click)="card(cardForm.value)">Finalizar compra</button>
+                                    <mat-form-field appearance="none">
+                                        <mat-label class="label">Endereço</mat-label>
+                                        <input matInput readonly type="text" [formControl]="street" [value]="street.value" required>
+                                        <mat-error *ngIf="street.touched && street.errors">Campo obrigatório.</mat-error>
+                                    </mat-form-field>
+                                    
+                                    <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+                                        <div fxFlex="48">
+                                            <mat-form-field appearance="none">
+                                                <mat-label class="label">Número</mat-label>
+                                                <input matInput type="text" [formControl]="addressNumber" required>
+                                                <mat-error *ngIf="addressNumber.touched && addressNumber.errors">Campo obrigatório.</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                            
+                                        <div fxFlex="48">
+                                            <mat-form-field appearance="none">
+                                                <mat-label class="label">Complemento</mat-label>
+                                                <input matInput type="text" [formControl]="complement" placeholder="Ex: Ap. XX, Casa X">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                            
+                                    <mat-form-field appearance="none">
+                                        <mat-label class="label">Bairro</mat-label>
+                                        <input matInput readonly type="text" [formControl]="district" required>
+                                        <mat-error *ngIf="district.touched && district.errors">Campo obrigatório.</mat-error>
+                                    </mat-form-field>
+                            
+                                    <div class="w-100" fxLayout="row" fxLayoutAlign="space-between center">
+                                        <div fxFlex="68">
+                                            <mat-form-field appearance="none">
+                                                <mat-label class="label">Cidade</mat-label>
+                                                <input matInput type="text" [formControl]="city" required readonly>
+                                                <mat-error *ngIf="city.touched && city.errors">Campo obrigatório.</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                            
+                                        <div fxFlex="28">
+                                            <mat-form-field appearance="none">
+                                                <mat-label class="label">Estado</mat-label>
+                                                <input matInput type="text" [formControl]="state" required readonly>
+                                                <mat-error *ngIf="state.touched && state.errors">Campo obrigatório.</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button [disabled]="cardForm.invalid" mat-flat-button class="btn bg-highlight btn-rounded m-auto float-right my-3" type="submit" (click)="card(cardForm.value)">Finalizar compra</button>
                         </form>
                     </mat-tab>
                     <mat-tab label="Boleto bancário">
